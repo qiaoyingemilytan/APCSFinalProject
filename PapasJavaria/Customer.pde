@@ -4,13 +4,13 @@ class Customer{
   private boolean hamburger, fries, chicken, hotdog, pizza;
   private ArrayList<String> order;
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
-  Arrays.asList("bun", "patty", "tomato", "lettuce", "onions", "bun"));
+  Arrays.asList("bun", "patty", "griddle", "tomato", "lettuce", "onions", "bun"));
   private ArrayList<String> friesSteps = new ArrayList<String>(
   Arrays.asList("potato", "knife", "deep fry"));
   private ArrayList<String> chickenSteps = new ArrayList<String>(
   Arrays.asList("raw chicken", "fry mix", "deep fry"));
   private ArrayList<String> hotdogSteps = new ArrayList<String>(
-  Arrays.asList("bun", "sausage", "ketchup", "mustard", "relish"));
+  Arrays.asList("bun", "sausage", "griddle", "ketchup", "mustard", "relish"));
   private ArrayList<String> pizzaSteps = new ArrayList<String>(
   Arrays.asList("dough", "tomato sauce", "cheese", "oven"));
 
