@@ -11,3 +11,9 @@ Development Log
 5/26/21
 
 Meicheng Wang: I updated the Customer class so it has all the necessary methods. Also I initialized the food steps ArrayLists so that held specific instructions for making each food. These ArrayLists are compared to the order ArrayList to check if the order is correct.
+
+Qiao Ying (Emily) Tan: I started setting up the customer class and buttons on the demo. I created an ArrayList of customers and worked on the mousePressed function so that if you click a button, the corresponding step will be added.
+
+5/27/21
+
+Qiao Ying (Emily) Tan: I finished up the buttons, adding text and if statements that determine which button will add which step. I added currentCustomer so that the customer's order being taken will stay the same until the order is correct.
