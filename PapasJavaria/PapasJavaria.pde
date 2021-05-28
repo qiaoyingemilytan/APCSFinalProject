@@ -10,11 +10,36 @@ void setup() {
 }
 
 void draw(){
+  textSize(12);
   for(int i = 0; i < 10; i++){
+    fill(#FFFFFF);
     rect(i * 150 + 20, 600, 100, 50);
+    fill(0);
+    if(i == 0){text("bun", i * 150 + 30, 620);}
+    if(i == 1){text("patty", i * 150 + 30, 620);}
+    if(i == 2){text("griddle", i * 150 + 30, 620);}
+    if(i == 3){text("tomato", i * 150 + 30, 620);}
+    if(i == 4){text("lettuce", i * 150 + 30, 620);}
+    if(i == 5){text("onions", i * 150 + 30, 620);}
+    if(i == 6){text("potato", i * 150 + 30, 620);}
+    if(i == 7){text("knife", i * 150 + 30, 620);}
+    if(i == 8){text("deep fry", i * 150 + 30, 620);}
+    if(i == 9){text("hot dog bun", i * 150 + 30, 620);}
   }
   for(int i = 0; i < 10; i++){
+    fill(#FFFFFF);
     rect(i * 150 + 20, 700, 100, 50);
+    fill(0);
+    if(i == 0){text("ketchup", i * 150 + 30, 720);}
+    if(i == 1){text("mustard", i * 150 + 30, 720);}
+    if(i == 2){text("relish", i * 150 + 30, 720);}
+    if(i == 3){text("dough", i * 150 + 30, 720);}
+    if(i == 4){text("tomato sauce", i * 150 + 30, 720);}
+    if(i == 5){text("cheese", i * 150 + 30, 720);}
+    if(i == 6){text("oven", i * 150 + 30, 720);}
+    if(i == 7){text("raw chicken", i * 150 + 30, 720);}
+    if(i == 8){text("fry mix", i * 150 + 30, 720);}
+    if(i == 9){text("sausage", i * 150 + 30, 720);}
   }
   for(Customer c : customers){
     while(!c.checkSteps()){
