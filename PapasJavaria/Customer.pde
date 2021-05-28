@@ -10,7 +10,7 @@ class Customer{
   private ArrayList<String> chickenSteps = new ArrayList<String>(
   Arrays.asList("raw chicken", "fry mix", "deep fry"));
   private ArrayList<String> hotdogSteps = new ArrayList<String>(
-  Arrays.asList("bun", "sausage", "griddle", "ketchup", "mustard", "relish"));
+  Arrays.asList("hot dog bun", "sausage", "griddle", "ketchup", "mustard", "relish"));
   private ArrayList<String> pizzaSteps = new ArrayList<String>(
   Arrays.asList("dough", "tomato sauce", "cheese", "oven"));
 
