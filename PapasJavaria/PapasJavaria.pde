@@ -1,4 +1,5 @@
 ArrayList<Customer> customers;
+Customer currentCustomer;
 void setup() {
   frameRate(30);
   size(1200, 800);
@@ -14,6 +15,11 @@ void draw(){
   }
   for(int i = 0; i < 10; i++){
     rect(i * 150 + 20, 700, 100, 50);
+  }
+  for(Customer c : customers){
+    while(!c.checkSteps()){
+      currentCustomer = c;
+    }
   }
 }
 
@@ -33,7 +39,7 @@ void mousePressed() {
   for(int i = 0; i < 10; i++){
     if(onButton(i * 150 + 20, 700, 100, 50)){
       if(i == 0){
-        //addStep("");
+        currentCustomer.addStep("");
       }
     }
   }

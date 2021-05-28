@@ -57,6 +57,7 @@ class Customer{
     return correct;
   }
   public ArrayList<String> makeOrder(){
+    //random order
     return order;
   }
   public void restartOrder(){
