@@ -2,6 +2,7 @@ import java.util.*;
 
 class Customer{
   private boolean hamburger, fries, chicken, hotdog, pizza;
+  private int correctSize;
   private ArrayList<String> order;
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
   Arrays.asList("bun", "patty", "griddle", "tomato", "lettuce", "onions", "bun"));
@@ -18,41 +19,59 @@ class Customer{
     order.add(step);
     if (step.equals("hamburger"))
       hamburger = true;
+      correctSize += 7;
     if (step.equals("fries"))
       fries = true;
+      correctSize += 3;
     if (step.equals("chicken"))
       chicken = true;
+      correctSize += 3;
     if (step.equals("hotdog"))
       hotdog = true;
+      correctSize += 6;
     if (step.equals("pizza"))
       pizza = true;
+      correctSize += 4;
   }
   public boolean checkSteps(){
     boolean correct = true;
     if(hamburger){
-      if (!order.equals(hamburgerSteps)){
-        correct = false;
+      for (int i = 0; i < order.size(); i++){
+        if (!order.subList(i, i+7).equals(hamburgerSteps)){
+          correct = false;
+        }
       }
     }
     if(fries){
-      if (!order.equals(friesSteps)){
-        correct = false;
+       for (int i = 0; i < order.size(); i++){
+        if (!order.subList(i, i+3).equals(friesSteps)){
+          correct = false;
+        }
       }
     }
     if(chicken){
-       if (!order.equals(chickenSteps)){
-        correct = false;
+      for (int i = 0; i < order.size(); i++){
+        if (!order.subList(i, i+3).equals(chickenSteps)){
+          correct = false;
+        }
       }
     }
     if(hotdog){
-      if (!order.equals(hotdogSteps)){
-        correct = false;
+      for (int i = 0; i < order.size(); i++){
+        if (!order.subList(i, i+6).equals(hotdogSteps)){
+          correct = false;
+        }
       }
     }
     if(pizza){
-      if (!order.equals(pizzaSteps)){
-        correct = false;
+      for (int i = 0; i < order.size(); i++){
+        if (!order.subList(i, i+4).equals(pizzaSteps)){
+          correct = false;
+        }
       }
+    }
+    if (correctSize != order.size()){
+      correct = false;
     }
     return correct;
   }
