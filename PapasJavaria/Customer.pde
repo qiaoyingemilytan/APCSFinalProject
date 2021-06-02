@@ -55,9 +55,9 @@ class Customer{
         }
       }
     }
-    //if (correctSize != order.size()){
-    //  correct = false;
-    //}
+    if (correctSize != order.size()){
+      correct = false;
+    }
     return correct;
   }
   public void makeOrder(){
