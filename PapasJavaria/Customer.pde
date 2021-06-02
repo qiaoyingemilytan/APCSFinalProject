@@ -21,38 +21,58 @@ class Customer{
   public boolean checkSteps(){
     boolean correct = true;
     if(hamburger){
+      boolean complete;
       for (int i = 0; i < order.size() - 7; i++){
-        if (!order.subList(i, i+7).equals(hamburgerSteps)){
-          correct = false;
+        if (order.subList(i, i+7).equals(hamburgerSteps)){
+          complete = true;
         }
+      }
+      if (!complete){
+        correct = false;
       }
     }
     if(fries){
+       boolean complete;
        for (int i = 0; i < order.size() - 3; i++){
-        if (!order.subList(i, i+3).equals(friesSteps)){
-          correct = false;
+        if (order.subList(i, i+3).equals(friesSteps)){
+          complete = true;
         }
+      }
+      if (!complete){
+        correct = false;
       }
     }
     if(chicken){
+      boolean complete;
       for (int i = 0; i < order.size() - 3; i++){
-        if (!order.subList(i, i+3).equals(chickenSteps)){
-          correct = false;
+        if (order.subList(i, i+3).equals(chickenSteps)){
+          complete = true;
         }
+      }
+      if (!complete){
+        correct = false;
       }
     }
     if(hotdog){
+      boolean complete;
       for (int i = 0; i < order.size() - 6; i++){
-        if (!order.subList(i, i+6).equals(hotdogSteps)){
-          correct = false;
+        if (order.subList(i, i+6).equals(hotdogSteps)){
+          complete = true;
         }
+      }
+      if (!complete){
+        correct = false;
       }
     }
     if(pizza){
+      boolean complete;
       for (int i = 0; i < order.size() - 4; i++){
-        if (!order.subList(i, i+4).equals(pizzaSteps)){
-          correct = false;
+        if (order.subList(i, i+4).equals(pizzaSteps)){
+          complete = true;
         }
+      }
+      if (!complete){
+        correct = false;
       }
     }
     if (correctSize != order.size()){
