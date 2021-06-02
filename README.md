@@ -17,3 +17,7 @@ Qiao Ying (Emily) Tan: I started setting up the customer class and buttons on th
 5/27/21
 
 Qiao Ying (Emily) Tan: I finished up the buttons, adding text and if statements that determine which button will add which step. I added currentCustomer so that the customer's order being taken will stay the same until the order is correct.
+
+5/28/21
+
+Meicheng Wang: I updated the Customer class so that addStep(String step) only adds the step to order now instead of checking for added food strings to make booleans true. Instead the food booleans becoming true is based on a 15 out of 100 chance in the makeOrder() method which no longer returns the ArrayList order but only determines which foods the customer is ordering. I also made a new instance variable so that you are not able to serve all the correct foods while also providing excess ingredients in the order. I also updated the checkSteps() method so that it uses for loops to check a sublist of the order ArrayList in order to check if it is equivalent to the food steps ArrayLists.
