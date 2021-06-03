@@ -2,6 +2,7 @@ import java.util.*;
 
 class Customer{
   private boolean hamburger, fries, chicken, hotdog, pizza;
+  private double patience;
   private int correctSize;
   private ArrayList<String> order;
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
@@ -81,19 +82,19 @@ class Customer{
     return correct;
   }
   public void makeOrder(){
-    if (Math.random() * 100 < 15)
+    if (Math.random() * 100 < 25)
       hamburger = true;
       correctSize += 7;
-    if (Math.random() * 100 < 15)
+    if (Math.random() * 100 < 25)
       fries = true;
       correctSize += 3;
-    if (Math.random() * 100 < 15)
+    if (Math.random() * 100 < 25)
       chicken = true;
       correctSize += 3;
-    if (Math.random() * 100 < 15)
+    if (Math.random() * 100 < 25)
       hotdog = true;
       correctSize += 6;
-    if (Math.random() * 100 < 15)
+    if (Math.random() * 100 < 25)
       pizza = true;
       correctSize += 4;
   }
