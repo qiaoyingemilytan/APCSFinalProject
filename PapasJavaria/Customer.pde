@@ -3,6 +3,7 @@ import java.util.*;
 class Customer{
   private boolean hamburger, fries, chicken, hotdog, pizza;
   private double patience;
+  private int difficulty;
   private int correctSize;
   private ArrayList<String> order;
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
@@ -97,6 +98,7 @@ class Customer{
     if (Math.random() * 100 < 25)
       pizza = true;
       correctSize += 4;
+    patience = Math.random() * 100 / difficulty;
   }
   public void restartOrder(){
     order.clear();
