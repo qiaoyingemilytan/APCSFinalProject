@@ -1,13 +1,17 @@
 ArrayList<Customer> customers;
+int customerNumber = 0;
 Customer currentCustomer;
-int customerNumber = 1;
+
 void setup() {
   frameRate(30);
   size(1200, 800);
   customers = new ArrayList<Customer>();
   
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 10; i++){
     customers.add(new Customer());
+  }
+  
+  currentCustomer = customers.get(customerNumber);
 }
 
 void draw(){
@@ -43,12 +47,8 @@ void draw(){
     if(i == 8){text("fry mix", i * 120 + 20, 720);}
     if(i == 9){text("sausage", i * 120 + 20, 720);}
   }
-  for(Customer c : customers){
-    while(c.isInProgress()){
-      currentCustomer = c;
-    }
-    customerNumber++;
-  }
+  
+  
   fill(#FFFFFF);
   rect(1000,100,100,50);
   fill(0);
@@ -68,11 +68,11 @@ void mousePressed() {
     }
     else{
       text("GOOD JOB", 1010, 160);
-      currentCustomer.restartOrder();
+      customerNumber++;
     }
   }
   for(int i = 0; i < 10; i++){
-    if(onButton(i * 120 + 10, 600, 100, 50)){
+     if(onButton(i * 120 + 10, 600, 100, 50)){
       if(i == 0){
         currentCustomer.addStep("bun");
       }

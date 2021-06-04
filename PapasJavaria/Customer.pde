@@ -1,7 +1,6 @@
 import java.util.*;
 
 class Customer{
-  private boolean inProgress = true;
   private boolean hamburger, fries, chicken, hotdog, pizza;
   private ArrayList<String> order;
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
@@ -55,12 +54,7 @@ class Customer{
         correct = false;
       }
     }
-    inProgress = !correct;
     return correct;
-  }
-  
-  public boolean isInProgress(){
-    return inProgress;
   }
   
   public ArrayList<String> makeOrder(){
