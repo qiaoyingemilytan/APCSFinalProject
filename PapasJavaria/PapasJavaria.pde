@@ -1,5 +1,6 @@
 ArrayList<Customer> customers;
 Customer currentCustomer;
+int customerNumber = 1;
 void setup() {
   frameRate(30);
   size(1200, 800);
@@ -10,6 +11,7 @@ void setup() {
 }
 
 void draw(){
+  text(customerNumber + "", 1150, 50);
   textSize(12);
   for(int i = 0; i < 10; i++){
     fill(#FFFFFF);
@@ -42,10 +44,15 @@ void draw(){
     if(i == 9){text("sausage", i * 120 + 20, 720);}
   }
   for(Customer c : customers){
-    while(!c.checkSteps()){
+    while(c.isInProgress()){
       currentCustomer = c;
     }
+    customerNumber++;
   }
+  fill(#FFFFFF);
+  rect(1000,100,100,50);
+  fill(0);
+  text("Give order", 1020, 120);
 }
 
 boolean onButton(int x, int y, int width, int height){
@@ -54,6 +61,16 @@ boolean onButton(int x, int y, int width, int height){
 }
 
 void mousePressed() {
+  if(onButton(1000,100,100,50)){
+    if(!currentCustomer.checkSteps()){
+      text("TRY AGAIN", 1010, 160);
+      currentCustomer.restartOrder();
+    }
+    else{
+      text("GOOD JOB", 1010, 160);
+      currentCustomer.restartOrder();
+    }
+  }
   for(int i = 0; i < 10; i++){
     if(onButton(i * 120 + 10, 600, 100, 50)){
       if(i == 0){

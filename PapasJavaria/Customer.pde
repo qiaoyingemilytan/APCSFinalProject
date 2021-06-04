@@ -1,6 +1,7 @@
 import java.util.*;
 
 class Customer{
+  private boolean inProgress = true;
   private boolean hamburger, fries, chicken, hotdog, pizza;
   private ArrayList<String> order;
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
@@ -30,7 +31,7 @@ class Customer{
   public boolean checkSteps(){
     boolean correct = true;
     if(hamburger){
-      if (!order.equals(hamburgerSteps)){
+      if (order.equals(hamburgerSteps)){
         correct = false;
       }
     }
@@ -54,10 +55,31 @@ class Customer{
         correct = false;
       }
     }
+    inProgress = !correct;
     return correct;
   }
+  
+  public boolean isInProgress(){
+    return inProgress;
+  }
+  
   public ArrayList<String> makeOrder(){
-    //random order
+    int orderNumber = (int)((Math.random()*5));
+    if(orderNumber == 0){
+      order.add("hamburger");
+    }
+    else if(orderNumber == 1){
+      order.add("fries");
+    }
+    else if(orderNumber == 2){
+      order.add("chicken");
+    }
+    else if(orderNumber == 3){
+      order.add("hotdog");
+    }
+    else{
+      order.add("pizza");
+    }
     return order;
   }
   public void restartOrder(){
