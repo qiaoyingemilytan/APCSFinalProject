@@ -23,7 +23,7 @@ class Customer{
   public boolean checkSteps(){
     boolean correct = true;
     if(hamburger){
-      boolean complete;
+      boolean complete = false;
       for (int i = 0; i < order.size() - 7; i++){
         if (order.subList(i, i+7).equals(hamburgerSteps)){
           complete = true;
@@ -34,7 +34,7 @@ class Customer{
       }
     }
     if(fries){
-       boolean complete;
+       boolean complete = false;
        for (int i = 0; i < order.size() - 3; i++){
         if (order.subList(i, i+3).equals(friesSteps)){
           complete = true;
@@ -45,7 +45,7 @@ class Customer{
       }
     }
     if(chicken){
-      boolean complete;
+      boolean complete = false;
       for (int i = 0; i < order.size() - 3; i++){
         if (order.subList(i, i+3).equals(chickenSteps)){
           complete = true;
@@ -56,7 +56,7 @@ class Customer{
       }
     }
     if(hotdog){
-      boolean complete;
+      boolean complete = false;
       for (int i = 0; i < order.size() - 6; i++){
         if (order.subList(i, i+6).equals(hotdogSteps)){
           complete = true;
@@ -67,7 +67,7 @@ class Customer{
       }
     }
     if(pizza){
-      boolean complete;
+      boolean complete = false;
       for (int i = 0; i < order.size() - 4; i++){
         if (order.subList(i, i+4).equals(pizzaSteps)){
           complete = true;
@@ -77,9 +77,9 @@ class Customer{
         correct = false;
       }
     }
-    if (correctSize != order.size()){
-      correct = false;
-    }
+    //if (correctSize != order.size()){
+    //  correct = false;
+    //}
     return correct;
   }
   public void makeOrder(){
