@@ -1,7 +1,7 @@
 ArrayList<Customer> customers;
 
 Customer currentCustomer;
-int currentIndex;
+int currentIndex = 0;
 void setup() {
   frameRate(30);
   size(1200, 800);
@@ -12,6 +12,7 @@ void setup() {
     newCustomer.makeOrder();
     customers.add(newCustomer);
   }
+  currentCustomer = customers.get(0);
 }
 
 void draw(){
@@ -30,7 +31,8 @@ void draw(){
     if(i == 7){text("knife", i * 120 + 20, 620);}
     if(i == 8){text("deep fry", i * 120 + 20, 620);}
     if(i == 9){text("hot dog bun", i * 120 + 20, 620);}
-    if(i == 10){text("Give Order", 600, 400);}
+    if(i == 10){text("Give Order", 600, 400);
+    text("Display Order", 700, 400);}
   }
   for(int i = 0; i < 10; i++){
     fill(#FFFFFF);
@@ -55,6 +57,11 @@ boolean onButton(int x, int y, int width, int height){
 }
 
 void mousePressed() {
+  if (onButton(700, 400, 100, 50)){
+    for (int i = 0; i < currentCustomer.getOrder().size(); i++){
+      text(currentCustomer.getOrder().get(i), 100 + 100 * i, 100);
+    }
+  }
   if (onButton(600, 400, 100, 50)){
     if(currentCustomer.checkSteps()){
       if (currentIndex < customers.size() - 1){

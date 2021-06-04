@@ -5,7 +5,7 @@ class Customer{
   private double patience;
   private int difficulty;
   private int correctSize;
-  private ArrayList<String> order;
+  private ArrayList<String> order = new ArrayList<String>();
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
   Arrays.asList("bun", "patty", "griddle", "tomato", "lettuce", "onions", "bun"));
   private ArrayList<String> friesSteps = new ArrayList<String>(
@@ -22,6 +22,9 @@ class Customer{
   }
   public void addStep(String step){
     order.add(step);
+  }
+  public ArrayList<String> getOrder(){
+    return order;
   }
   public boolean checkSteps(){
     boolean correct = true;
