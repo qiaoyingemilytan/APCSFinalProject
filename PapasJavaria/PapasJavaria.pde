@@ -48,11 +48,15 @@ void draw(){
     if(i == 9){text("sausage", i * 120 + 20, 720);}
   }
   
-  
   fill(#FFFFFF);
   rect(1000,100,100,50);
   fill(0);
   text("Give order", 1020, 120);
+  
+  fill(#FFFFFF);
+  rect(500,100,100,50);
+  fill(0);
+  text("Serve Customer", 520, 120);
 }
 
 boolean onButton(int x, int y, int width, int height){
@@ -71,6 +75,12 @@ void mousePressed() {
       customerNumber++;
     }
   }
+  
+  if(onButton(500,100,100,50)){
+    ArrayList<String> currentOrder = currentCustomer.makeOrder();
+    text(currentOrder.get(0),500,300);
+  }
+  
   for(int i = 0; i < 10; i++){
      if(onButton(i * 120 + 10, 600, 100, 50)){
       if(i == 0){
