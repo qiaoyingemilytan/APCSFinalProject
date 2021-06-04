@@ -16,7 +16,10 @@ class Customer{
   Arrays.asList("hot dog bun", "sausage", "griddle", "ketchup", "mustard", "relish"));
   private ArrayList<String> pizzaSteps = new ArrayList<String>(
   Arrays.asList("dough", "tomato sauce", "cheese", "oven"));
-
+  
+  public Customer(int difficulty){
+    this.difficulty = difficulty;
+  }
   public void addStep(String step){
     order.add(step);
   }
@@ -24,10 +27,12 @@ class Customer{
     boolean correct = true;
     if(hamburger){
       boolean complete = false;
+      if (order.size() >= 7){
       for (int i = 0; i < order.size() - 7; i++){
         if (order.subList(i, i+7).equals(hamburgerSteps)){
           complete = true;
         }
+      }
       }
       if (!complete){
         correct = false;
@@ -35,21 +40,25 @@ class Customer{
     }
     if(fries){
        boolean complete = false;
+       if(order.size() >= 3){
        for (int i = 0; i < order.size() - 3; i++){
         if (order.subList(i, i+3).equals(friesSteps)){
           complete = true;
         }
       }
+       }
       if (!complete){
         correct = false;
       }
     }
     if(chicken){
       boolean complete = false;
+      if (order.size() >= 3){
       for (int i = 0; i < order.size() - 3; i++){
         if (order.subList(i, i+3).equals(chickenSteps)){
           complete = true;
         }
+      }
       }
       if (!complete){
         correct = false;
@@ -57,10 +66,12 @@ class Customer{
     }
     if(hotdog){
       boolean complete = false;
+      if (order.size() >= 6){
       for (int i = 0; i < order.size() - 6; i++){
         if (order.subList(i, i+6).equals(hotdogSteps)){
           complete = true;
         }
+      }
       }
       if (!complete){
         correct = false;
@@ -68,10 +79,12 @@ class Customer{
     }
     if(pizza){
       boolean complete = false;
+      if (order.size() >= 6){
       for (int i = 0; i < order.size() - 4; i++){
         if (order.subList(i, i+4).equals(pizzaSteps)){
           complete = true;
         }
+      }
       }
       if (!complete){
         correct = false;
@@ -98,7 +111,7 @@ class Customer{
     if (Math.random() * 100 < 25)
       pizza = true;
       correctSize += 4;
-    patience = Math.random() * 100 / difficulty;
+    patience = 200 / difficulty + Math.random();
   }
   public void restartOrder(){
     order.clear();
