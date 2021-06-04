@@ -58,9 +58,25 @@ class Customer{
   public boolean checkSteps(){
     boolean correct = true;
     if(hamburger){
+      correct = order.equals(hamburgerSteps);
+    }
+    if(fries){
+      correct = order.equals(friesSteps);
+    }
+    if(chicken){
+      correct = order.equals(chickenSteps);
+    }
+    if(hotdog){
+      correct = order.equals(hotdogSteps);
+    }
+    if(pizza){
+      correct = order.equals(pizzaSteps);
+    }
+    /*
+    if(hamburger){
       boolean complete = false;
       if (order.size() >= 7){
-      for (int i = 0; i < order.size() - 7; i++){
+      for (int i = 0; i < order.size() - 6; i++){
         if (order.subList(i, i+7).equals(hamburgerSteps)){
           complete = true;
         }
@@ -73,7 +89,7 @@ class Customer{
     if(fries){
        boolean complete = false;
        if(order.size() >= 3){
-       for (int i = 0; i < order.size() - 3; i++){
+       for (int i = 0; i < order.size() - 2; i++){
         if (order.subList(i, i+3).equals(friesSteps)){
           complete = true;
         }
@@ -86,7 +102,7 @@ class Customer{
     if(chicken){
       boolean complete = false;
       if (order.size() >= 3){
-      for (int i = 0; i < order.size() - 3; i++){
+      for (int i = 0; i < order.size() - 2; i++){
         if (order.subList(i, i+3).equals(chickenSteps)){
           complete = true;
         }
@@ -99,7 +115,7 @@ class Customer{
     if(hotdog){
       boolean complete = false;
       if (order.size() >= 6){
-      for (int i = 0; i < order.size() - 6; i++){
+      for (int i = 0; i < order.size() - 5; i++){
         if (order.subList(i, i+6).equals(hotdogSteps)){
           complete = true;
         }
@@ -112,7 +128,7 @@ class Customer{
     if(pizza){
       boolean complete = false;
       if (order.size() >= 6){
-      for (int i = 0; i < order.size() - 4; i++){
+      for (int i = 0; i < order.size() - 3; i++){
         if (order.subList(i, i+4).equals(pizzaSteps)){
           complete = true;
         }
@@ -122,27 +138,33 @@ class Customer{
         correct = false;
       }
     }
-    //if (correctSize != order.size()){
-    //  correct = false;
-    //}
+    if (correctSize != order.size()){
+      correct = false;
+    }
+    */
     return correct;
   }
   public void makeOrder(){
-    if (Math.random() * 100 < 25)
+    if (Math.random() * 100 < 20){
       hamburger = true;
       correctSize += 7;
-    if (Math.random() * 100 < 25)
+    }
+    else if (Math.random() * 100 < 20){
       fries = true;
       correctSize += 3;
-    if (Math.random() * 100 < 25)
+    }
+    else if (Math.random() * 100 < 20){
       chicken = true;
       correctSize += 3;
-    if (Math.random() * 100 < 25)
+    }
+    else if (Math.random() * 100 < 20){
       hotdog = true;
       correctSize += 6;
-    if (Math.random() * 100 < 25)
+    }
+    else if (Math.random() * 100 < 20){
       pizza = true;
       correctSize += 4;
+    }
     patience = 200 / difficulty + Math.random();
   }
   public void restartOrder(){
