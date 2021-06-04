@@ -20,6 +20,9 @@ void draw(){
   for(int i = 0; i < 11; i++){
     fill(#FFFFFF);
     rect(i * 120 + 10, 600, 100, 50);
+    rect(450 - 10, 400 - 20, 100, 50);
+    rect(600 - 10, 400 - 20, 100, 50);
+    rect(750 - 10, 400 - 20, 170, 50);
     fill(0);
     if(i == 0){text("bun", i * 120 + 20, 620);}
     if(i == 1){text("patty", i * 120 + 20, 620);}
@@ -31,8 +34,10 @@ void draw(){
     if(i == 7){text("knife", i * 120 + 20, 620);}
     if(i == 8){text("deep fry", i * 120 + 20, 620);}
     if(i == 9){text("hot dog bun", i * 120 + 20, 620);}
-    if(i == 10){text("Give Order", 600, 400);
-    text("Display Order", 700, 400);}
+    if(i == 10){
+    text("Give Order", 450, 400);
+    text("Display Order", 600, 400);
+    text("Display customer's order", 750, 400);}
   }
   for(int i = 0; i < 10; i++){
     fill(#FFFFFF);
@@ -57,19 +62,29 @@ boolean onButton(int x, int y, int width, int height){
 }
 
 void mousePressed() {
-  if (onButton(700, 400, 100, 50)){
+  //Display customer's order button
+  if (onButton(750 - 10, 400 - 20, 170, 50)){
+   for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
+      text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 100);
+   }
+  }
+  //Display order button
+  if (onButton(600 - 10, 400 - 20, 100, 50)){
     for (int i = 0; i < currentCustomer.getOrder().size(); i++){
-      text(currentCustomer.getOrder().get(i), 100 + 100 * i, 100);
+      text(currentCustomer.getOrder().get(i), 100 + 100 * i, 200);
     }
   }
-  if (onButton(600, 400, 100, 50)){
+  //Give order button
+  if (onButton(450 - 10, 400 - 20, 100, 50)){
     if(currentCustomer.checkSteps()){
+      text("Correct Order", 550, 300);
       if (currentIndex < customers.size() - 1){
         currentIndex += 1;
         currentCustomer = customers.get(currentIndex);
       }
     }
     else{
+      text("Wrong Order", 550, 300); 
       currentCustomer.restartOrder();
     }     
   }

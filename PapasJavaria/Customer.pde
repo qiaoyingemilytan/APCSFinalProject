@@ -26,6 +26,35 @@ class Customer{
   public ArrayList<String> getOrder(){
     return order;
   }
+  public ArrayList<String> customersOrder(){
+    ArrayList<String> customersOrder = new ArrayList<String>();
+    if(hamburger){
+      for (String step : hamburgerSteps){
+        customersOrder.add(step);
+      }
+    }
+    if(fries){
+      for (String step : hamburgerSteps){
+        customersOrder.add(step);
+      }
+    }
+    if(chicken){
+      for (String step : hamburgerSteps){
+        customersOrder.add(step);
+      }
+    }
+    if(hotdog){
+      for (String step : hamburgerSteps){
+        customersOrder.add(step);
+      }
+    }
+    if(pizza){
+      for (String step : hamburgerSteps){
+        customersOrder.add(step);
+      }
+    } 
+    return customersOrder;
+  } 
   public boolean checkSteps(){
     boolean correct = true;
     if(hamburger){
