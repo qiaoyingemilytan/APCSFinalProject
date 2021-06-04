@@ -2,7 +2,10 @@ import java.util.*;
 
 class Customer{
   private boolean hamburger, fries, chicken, hotdog, pizza;
-  private ArrayList<String> order;
+  private double patience;
+  private int difficulty;
+  private int correctSize;
+  private ArrayList<String> order = new ArrayList<String>();
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
   Arrays.asList("bun", "patty", "griddle", "tomato", "lettuce", "onions", "bun"));
   private ArrayList<String> friesSteps = new ArrayList<String>(
@@ -13,49 +16,122 @@ class Customer{
   Arrays.asList("hot dog bun", "sausage", "griddle", "ketchup", "mustard", "relish"));
   private ArrayList<String> pizzaSteps = new ArrayList<String>(
   Arrays.asList("dough", "tomato sauce", "cheese", "oven"));
-
+  
+  public Customer(int difficulty){
+    this.difficulty = difficulty;
+  }
   public void addStep(String step){
     order.add(step);
-    if (step.equals("hamburger"))
-      hamburger = true;
-    if (step.equals("fries"))
-      fries = true;
-    if (step.equals("chicken"))
-      chicken = true;
-    if (step.equals("hotdog"))
-      hotdog = true;
-    if (step.equals("pizza"))
-      pizza = true;
   }
+  public ArrayList<String> getOrder(){
+    return order;
+  }
+  public ArrayList<String> customersOrder(){
+    ArrayList<String> customersOrder = new ArrayList<String>();
+    if(hamburger){
+      for (String step : hamburgerSteps){
+        customersOrder.add(step);
+      }
+    }
+    if(fries){
+      for (String step : hamburgerSteps){
+        customersOrder.add(step);
+      }
+    }
+    if(chicken){
+      for (String step : hamburgerSteps){
+        customersOrder.add(step);
+      }
+    }
+    if(hotdog){
+      for (String step : hamburgerSteps){
+        customersOrder.add(step);
+      }
+    }
+    if(pizza){
+      for (String step : hamburgerSteps){
+        customersOrder.add(step);
+      }
+    } 
+    return customersOrder;
+  } 
   public boolean checkSteps(){
     boolean correct = true;
     if(hamburger){
+<<<<<<< HEAD
       if (order.equals(hamburgerSteps)){
+=======
+      boolean complete = false;
+      if (order.size() >= 7){
+      for (int i = 0; i < order.size() - 7; i++){
+        if (order.subList(i, i+7).equals(hamburgerSteps)){
+          complete = true;
+        }
+      }
+      }
+      if (!complete){
+>>>>>>> b3afbcbd9159a8ba0e0658f7eb752ed5a4d66f16
         correct = false;
       }
     }
     if(fries){
-      if (!order.equals(friesSteps)){
+       boolean complete = false;
+       if(order.size() >= 3){
+       for (int i = 0; i < order.size() - 3; i++){
+        if (order.subList(i, i+3).equals(friesSteps)){
+          complete = true;
+        }
+      }
+       }
+      if (!complete){
         correct = false;
       }
     }
     if(chicken){
-       if (!order.equals(chickenSteps)){
+      boolean complete = false;
+      if (order.size() >= 3){
+      for (int i = 0; i < order.size() - 3; i++){
+        if (order.subList(i, i+3).equals(chickenSteps)){
+          complete = true;
+        }
+      }
+      }
+      if (!complete){
         correct = false;
       }
     }
     if(hotdog){
-      if (!order.equals(hotdogSteps)){
+      boolean complete = false;
+      if (order.size() >= 6){
+      for (int i = 0; i < order.size() - 6; i++){
+        if (order.subList(i, i+6).equals(hotdogSteps)){
+          complete = true;
+        }
+      }
+      }
+      if (!complete){
         correct = false;
       }
     }
     if(pizza){
-      if (!order.equals(pizzaSteps)){
+      boolean complete = false;
+      if (order.size() >= 6){
+      for (int i = 0; i < order.size() - 4; i++){
+        if (order.subList(i, i+4).equals(pizzaSteps)){
+          complete = true;
+        }
+      }
+      }
+      if (!complete){
         correct = false;
       }
     }
+    //if (correctSize != order.size()){
+    //  correct = false;
+    //}
     return correct;
   }
+<<<<<<< HEAD
   
   public ArrayList<String> makeOrder(){
     int orderNumber = (int)((Math.random()*5));
@@ -75,6 +151,24 @@ class Customer{
       order.add("pizza");
     }
     return order;
+
+  public void makeOrder(){
+    if (Math.random() * 100 < 25)
+      hamburger = true;
+      correctSize += 7;
+    if (Math.random() * 100 < 25)
+      fries = true;
+      correctSize += 3;
+    if (Math.random() * 100 < 25)
+      chicken = true;
+      correctSize += 3;
+    if (Math.random() * 100 < 25)
+      hotdog = true;
+      correctSize += 6;
+    if (Math.random() * 100 < 25)
+      pizza = true;
+      correctSize += 4;
+    patience = 200 / difficulty + Math.random();
   }
   public void restartOrder(){
     order.clear();
