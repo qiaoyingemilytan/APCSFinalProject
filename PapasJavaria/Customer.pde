@@ -73,9 +73,6 @@ class Customer{
     }
     /*
     if(hamburger){
-<<<<<<< HEAD
-      if (order.equals(hamburgerSteps)){
-=======
       boolean complete = false;
       if (order.size() >= 7){
       for (int i = 0; i < order.size() - 6; i++){
@@ -85,7 +82,6 @@ class Customer{
       }
       }
       if (!complete){
->>>>>>> b3afbcbd9159a8ba0e0658f7eb752ed5a4d66f16
         correct = false;
       }
     }
@@ -147,27 +143,6 @@ class Customer{
     */
     return correct;
   }
-<<<<<<< HEAD
-  
-  public ArrayList<String> makeOrder(){
-    int orderNumber = (int)((Math.random()*5));
-    if(orderNumber == 0){
-      order.add("hamburger");
-    }
-    else if(orderNumber == 1){
-      order.add("fries");
-    }
-    else if(orderNumber == 2){
-      order.add("chicken");
-    }
-    else if(orderNumber == 3){
-      order.add("hotdog");
-    }
-    else{
-      order.add("pizza");
-    }
-    return order;
-
   public void makeOrder(){
     if (Math.random() * 100 < 25)
       hamburger = true;
