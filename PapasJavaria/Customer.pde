@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Customer{
   private boolean hamburger, fries, chicken, hotdog, pizza;
   private double patience;
@@ -57,19 +56,19 @@ class Customer{
   } 
   public boolean checkSteps(){
     boolean correct = true;
-    if(hamburger){
+    if (hamburger){
       correct = order.equals(hamburgerSteps);
     }
-    if(fries){
+    if (fries){
       correct = order.equals(friesSteps);
     }
-    if(chicken){
+    if (chicken){
       correct = order.equals(chickenSteps);
     }
-    if(hotdog){
+    if (hotdog){
       correct = order.equals(hotdogSteps);
     }
-    if(pizza){
+    if (pizza){
       correct = order.equals(pizzaSteps);
     }
     /*
@@ -145,26 +144,21 @@ class Customer{
     return correct;
   }
   public void makeOrder(){
-    if (Math.random() * 100 < 20){
+    if (Math.random() * 100 < 25)
       hamburger = true;
       correctSize += 7;
-    }
-    else if (Math.random() * 100 < 20){
+    if (Math.random() * 100 < 25)
       fries = true;
       correctSize += 3;
-    }
-    else if (Math.random() * 100 < 20){
+    if (Math.random() * 100 < 25)
       chicken = true;
       correctSize += 3;
-    }
-    else if (Math.random() * 100 < 20){
+    if (Math.random() * 100 < 25)
       hotdog = true;
       correctSize += 6;
-    }
-    else if (Math.random() * 100 < 20){
+    if (Math.random() * 100 < 25)
       pizza = true;
       correctSize += 4;
-    }
     patience = 200 / difficulty + Math.random();
   }
   public void restartOrder(){
