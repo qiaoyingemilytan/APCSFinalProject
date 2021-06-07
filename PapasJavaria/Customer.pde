@@ -4,6 +4,7 @@ class Customer{
   private double patience;
   private int difficulty;
   private int correctSize;
+  private float orderNum;
   private ArrayList<String> order = new ArrayList<String>();
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
   Arrays.asList("bun", "patty", "griddle", "tomato", "lettuce", "onions", "bun"));
@@ -33,22 +34,22 @@ class Customer{
       }
     }
     if(fries){
-      for (String step : hamburgerSteps){
+      for (String step : friesSteps){
         customersOrder.add(step);
       }
     }
     if(chicken){
-      for (String step : hamburgerSteps){
+      for (String step : chickenSteps){
         customersOrder.add(step);
       }
     }
     if(hotdog){
-      for (String step : hamburgerSteps){
+      for (String step : hotdogSteps){
         customersOrder.add(step);
       }
     }
     if(pizza){
-      for (String step : hamburgerSteps){
+      for (String step : pizzaSteps){
         customersOrder.add(step);
       }
     } 
@@ -143,7 +144,23 @@ class Customer{
     */
     return correct;
   }
+  
+  public float orderNumber(){
+    return orderNum;
+  }
   public void makeOrder(){
+    orderNum = (float)Math.random() * 5;
+    if (orderNum < 1)
+      hamburger = true;
+    else if (orderNum < 2)
+      fries = true;
+    else if (orderNum < 3)
+      chicken = true;
+    else if (orderNum < 4)
+      hotdog = true;
+    else if (orderNum < 5)
+      pizza = true;
+    /*
     if (Math.random() * 100 < 25)
       hamburger = true;
       correctSize += 7;
@@ -159,6 +176,7 @@ class Customer{
     if (Math.random() * 100 < 25)
       pizza = true;
       correctSize += 4;
+      */
     patience = 200 / difficulty + Math.random();
   }
   public void restartOrder(){
