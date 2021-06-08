@@ -4,6 +4,7 @@ int customerNumber = 0;
 void setup() {
   frameRate(30);
   size(1200, 800);
+  background(209);
   customers = new ArrayList<Customer>();
   
   for (int i = 0; i < 10; i++){
@@ -61,6 +62,9 @@ boolean onButton(int x, int y, int width, int height){
 void mousePressed() {
 //Display customer's order button
   if (onButton(750 - 10, 400 - 20, 170, 50)){
+   fill(209);
+   rect(0, 0, 1200, 300);
+   fill(0);
    for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
       text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 100);
    }
@@ -70,7 +74,6 @@ void mousePressed() {
     for (int i = 0; i < currentCustomer.getOrder().size(); i++){
       text(currentCustomer.getOrder().get(i), 100 + 100 * i, 200);
     }
-    text(currentCustomer.getOrder().size(), 500, 300);
   }
 //Give order button
   if (onButton(450 - 10, 400 - 20, 100, 50)){
