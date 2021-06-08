@@ -15,6 +15,7 @@ void setup() {
   currentCustomer = customers.get(0);
 }
 void draw(){
+  noStroke();
   textSize(12);
   for(int i = 0; i < 11; i++){
     fill(#FFFFFF);
@@ -71,6 +72,9 @@ void mousePressed() {
   }
   //Display order button
   if (onButton(600 - 10, 400 - 20, 100, 50)){
+    fill(209);
+    rect(0, 120, 1200, 300);
+    fill(0);
     for (int i = 0; i < currentCustomer.getOrder().size(); i++){
       text(currentCustomer.getOrder().get(i), 100 + 100 * i, 200);
     }
