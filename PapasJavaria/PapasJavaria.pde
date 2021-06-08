@@ -22,7 +22,7 @@ void draw(){
     fill(#FFFFFF);
     rect(i * 120 + 10, 600, 100, 50);
     rect(450 - 10, 400 - 20, 100, 50);
-    rect(600 - 10, 400 - 20, 100, 50);
+    //rect(600 - 10, 400 - 20, 100, 50);
     rect(750 - 10, 400 - 20, 170, 50);
     fill(0);
     if(i == 0){text("bun", i * 120 + 20, 620);}
@@ -37,7 +37,7 @@ void draw(){
     if(i == 9){text("hot dog bun", i * 120 + 20, 620);}
  if(i == 10){
     text("Give Order", 450, 400);
-    text("Display Order", 600, 400);
+    //text("Display Order", 600, 400);
     text("Display customer's order", 750, 400);}
   }
   for(int i = 0; i < 10; i++){
@@ -82,6 +82,9 @@ void mousePressed() {
   if (onButton(450 - 10, 400 - 20, 100, 50)){
     stepPosition = 0;
     if(currentCustomer.checkSteps()){
+      fill(209);
+      rect(500, 280, 1200, 100);
+      fill(0);
       text("Correct Order", 550, 300);
       if (customerNumber < customers.size() - 1){
         customerNumber += 1;
@@ -89,6 +92,9 @@ void mousePressed() {
       }
     }
     else{
+      fill(209);
+      rect(500, 280, 1200, 100);
+      fill(0);
       text("Wrong Order", 550, 300);
       fill(209);
       rect(0, 120, 1200, 100);
