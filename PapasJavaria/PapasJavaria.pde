@@ -1,6 +1,7 @@
 ArrayList<Customer> customers;
 Customer currentCustomer;
 int customerNumber = 0;
+int stepPosition = 0;
 void setup() {
   frameRate(30);
   size(1200, 800);
@@ -71,16 +72,15 @@ void mousePressed() {
    }
   }
   //Display order button
-  if (onButton(600 - 10, 400 - 20, 100, 50)){
-    fill(209);
-    rect(0, 120, 1200, 300);
-    fill(0);
-    for (int i = 0; i < currentCustomer.getOrder().size(); i++){
-      text(currentCustomer.getOrder().get(i), 100 + 100 * i, 200);
-    }
-  }
+  //if (onButton(600 - 10, 400 - 20, 100, 50)){
+  //  for (int i = 0; i < currentCustomer.getOrder().size(); i++){
+  //    text(currentCustomer.getOrder().get(i), 100 + 100 * i, 200);
+  //  }
+  //}
+  
 //Give order button
   if (onButton(450 - 10, 400 - 20, 100, 50)){
+    stepPosition = 0;
     if(currentCustomer.checkSteps()){
       text("Correct Order", 550, 300);
       if (customerNumber < customers.size() - 1){
@@ -89,7 +89,10 @@ void mousePressed() {
       }
     }
     else{
-      text("Wrong Order", 550, 300); 
+      text("Wrong Order", 550, 300);
+      fill(209);
+      rect(0, 120, 1200, 100);
+      fill(0);
       currentCustomer.restartOrder();
     }     
   }
@@ -97,33 +100,53 @@ void mousePressed() {
     if(onButton(i * 120 + 10, 600, 100, 50)){
       if(i == 0){
         currentCustomer.addStep("bun");
+        text("bun" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 1){
         currentCustomer.addStep("patty");
+        text("patty" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 2){
         currentCustomer.addStep("griddle");
+        text("griddle" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 3){
         currentCustomer.addStep("tomato");
+        text("tomato" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 4){
         currentCustomer.addStep("lettuce");
+        text("lettuce" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 5){
         currentCustomer.addStep("onions");
+        text("onions" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 6){
         currentCustomer.addStep("potato");
+        text("potato" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 7){
         currentCustomer.addStep("knife");
+        text("knife" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 8){
         currentCustomer.addStep("deep fry");
+        text("deep fry" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 9){
         currentCustomer.addStep("hot dog bun");
+        text("hot dog bun" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
     }
   }
@@ -131,33 +154,53 @@ void mousePressed() {
     if(onButton(i * 120 + 10, 700, 100, 50)){
       if(i == 0){
         currentCustomer.addStep("ketchup");
+        text("ketchup" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 1){
         currentCustomer.addStep("mustard");
+        text("mustard" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 2){
         currentCustomer.addStep("relish");
+        text("relish" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 3){
         currentCustomer.addStep("dough");
+        text("dough" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 4){
         currentCustomer.addStep("tomato sauce");
+        text("tomato sauce" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 5){
         currentCustomer.addStep("cheese");
+        text("cheese" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 6){
         currentCustomer.addStep("oven");
+        text("oven" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 7){
         currentCustomer.addStep("raw chicken");
+        text("raw chicken" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 8){
         currentCustomer.addStep("fry mix");
+        text("fry mix" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
       if(i == 9){
         currentCustomer.addStep("sausage");
+        text("sausage" , 100 + 100 * stepPosition, 200);
+        stepPosition++;
       }
     }
   }
