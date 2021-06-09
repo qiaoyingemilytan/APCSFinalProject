@@ -86,15 +86,15 @@ void mousePressed() {
       rect(500, 280, 1200, 100);
       fill(0);
       text("Correct Order", 550, 300);
-      if (customerNumber < customers.size()){
-        if (customerNumber == customers.size() - 1){
-          fill(209);
-          rect(500, 280, 1200, 100);
-          fill(0);
-          text("End of shift", 550, 300);
-        }
+      if (customerNumber < customers.size() - 1){
         customerNumber += 1;
         currentCustomer = customers.get(customerNumber);
+      }
+      else {
+        fill(209);
+        rect(500, 280, 1200, 100);
+        fill(0);
+        text("Correct order, this is the end of shift", 550, 300);
       }
     }
     else{
