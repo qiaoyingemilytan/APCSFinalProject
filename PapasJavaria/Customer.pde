@@ -177,7 +177,10 @@ class Customer{
       pizza = true;
       correctSize += 4;
       */
-    patience = 200 / difficulty + Math.random();
+    patience = 200 / (difficulty + Math.random());
+  }
+  public double customersPatience(){
+    return patience;
   }
   public void restartOrder(){
     order.clear();

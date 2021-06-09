@@ -2,6 +2,7 @@ ArrayList<Customer> customers;
 Customer currentCustomer;
 int customerNumber = 0;
 int stepPosition = 0;
+boolean showPatience = false;
 void setup() {
   frameRate(30);
   size(1200, 800);
@@ -35,10 +36,11 @@ void draw(){
     if(i == 7){text("knife", i * 120 + 20, 620);}
     if(i == 8){text("deep fry", i * 120 + 20, 620);}
     if(i == 9){text("hot dog bun", i * 120 + 20, 620);}
- if(i == 10){
-    text("Give Order", 450, 400);
-    //text("Display Order", 600, 400);
-    text("Display customer's order", 750, 400);}
+    if(i == 10){
+      text("Give Order", 450, 400);
+      //text("Display Order", 600, 400);
+      text("Display customer's order", 750, 400);
+    }
   }
   for(int i = 0; i < 10; i++){
     fill(#FFFFFF);
@@ -55,6 +57,20 @@ void draw(){
     if(i == 8){text("fry mix", i * 120 + 20, 720);}
     if(i == 9){text("sausage", i * 120 + 20, 720);}
   }
+  //Timer for customer's patience remaining
+  if (showPatience){
+    int currentPatience = millis() / 1000;
+    if (currentPatience <= currentCustomer.customersPatience()){
+      fill(209);
+      rect(1100, 70, 100, 150);
+      fill(0);
+      text((int)currentCustomer.customersPatience() - currentPatience, 1100, 100);
+      text("____", 1100, 105);
+      //This is to compare the total patience of the customer to the remaining time, might remove it later
+      text((int)currentCustomer.customersPatience(), 1100, 120);
+    }
+  }
+    
 }
 boolean onButton(int x, int y, int width, int height){
   return (mouseX >= x && mouseX < x + width &&
@@ -64,6 +80,7 @@ boolean onButton(int x, int y, int width, int height){
 void mousePressed() {
 //Display customer's order button
   if (onButton(750 - 10, 400 - 20, 170, 50)){
+   showPatience = true;
    fill(209);
    rect(0, 0, 1200, 300);
    fill(0);
