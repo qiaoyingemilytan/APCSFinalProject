@@ -30,12 +30,80 @@ void draw(){
   }
   noStroke();
   textSize(12);
+  fill(#FFFFFF);
+  rect(490, 580, 350, 100);
+  fill(0);
+  text("Plates here for putting the food on to serve to customer.", 500, 600);
+  textSize(12);
+
+  //Rectangles
+  fill(#FFFFFF);
+  rect(450 - 10, 400 - 20, 100, 50);
+  rect(750 - 10, 400 - 20, 170, 50);
+  //Bread
+  rect(340, 600, 100, 50);
+  rect(340, 680, 100, 50);
+  //Appliances
+  rect(890, 480, 100, 50);
+  rect(890, 580, 100, 50);
+  rect(990, 580, 100, 50);
+  //Vegetables
+  rect(190, 580, 100, 50);
+  rect(190, 630, 100, 50);
+  rect(190, 680, 100, 50);
+  rect(190, 730, 100, 50);
+  //Meat
+  rect(490, 730, 100, 50);
+  rect(590, 730, 100, 50);
+  rect(690, 730, 100, 50);
+  //Condiments
+  rect(140, 430, 100, 50);
+  rect(210, 430, 100, 50);
+  rect(280, 430, 100, 50);
+  rect(360, 430, 100, 50);
+  //Misc
+  rect(540, 430, 100, 50);
+  rect(590, 430, 100, 50);
+  rect(640, 430, 100, 50);
+  rect(690, 430, 100, 50);
+  
+  fill(0);
+  //Bread section
+  text("bun", 350, 620);
+  text("hot dog bun", 350, 700);
+  //Appliances section
+  text("oven", 900, 500);
+  text("griddle", 900, 600);
+  text("deep fry", 1000, 600);
+  //Vegetables section
+  text("lettuce", 200, 600);
+  text("tomato", 200, 650);
+  text("onions", 200, 700);
+  text("potato", 200, 750);
+  //Meat section
+  text("patty", 500, 750);
+  text("sausage", 600, 750);
+  text("raw chicken", 700, 750);
+  //Condiments
+  text("ketchup", 150, 450);
+  text("mustard", 220, 450);
+  text("relish", 290, 450);
+  text("tomato sauce", 360, 450);
+  //Miscellaneous section
+  text("cheese", 550, 450);
+  text("knife", 600, 450);
+  text("dough", 650, 450);
+  text("fry mix", 700, 450);
+  //Buttons for displaying order and customer's order
+  text("Display customer's order", 750, 400);
+  text("Give Order", 450, 400);
+  /*
   for(int i = 0; i < 11; i++){
     fill(#FFFFFF);
     rect(i * 120 + 10, 600, 100, 50);
-    rect(450 - 10, 400 - 20, 100, 50);
+    
     //rect(600 - 10, 400 - 20, 100, 50);
-    rect(750 - 10, 400 - 20, 170, 50);
+    
     fill(0);
     if(i == 0){text("bun", i * 120 + 20, 620);}
     if(i == 1){text("patty", i * 120 + 20, 620);}
@@ -68,6 +136,7 @@ void draw(){
     if(i == 8){text("fry mix", i * 120 + 20, 720);}
     if(i == 9){text("sausage", i * 120 + 20, 720);}
   }
+  */
   //Displaying money you have
   fill(209);
   rect(0, 0, 100, 50);
