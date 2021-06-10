@@ -6,6 +6,7 @@ class Customer{
   private int difficulty;
   private int correctSize;
   private float orderNum;
+  private int[] numberOfFoods = {1, 2, 3};
   private ArrayList<String> order = new ArrayList<String>();
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
   Arrays.asList("bun", "patty", "griddle", "tomato", "lettuce", "onions", "bun"));
@@ -135,6 +136,8 @@ class Customer{
     return orderNum;
   }
   public void makeOrder(){
+    int number = numberOfFoods[(int)Math.floor(Math.random()*numberOfFoods.length)];
+    for (int i = 0; i < number; i++){
     orderNum = (float)Math.random() * 5;
     if (orderNum < 1)
       hamburger = true;
@@ -146,6 +149,7 @@ class Customer{
       hotdog = true;
     else if (orderNum < 5)
       pizza = true;
+    }
     /*
     if (Math.random() * 100 < 25)
       hamburger = true;
