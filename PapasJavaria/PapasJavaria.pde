@@ -5,9 +5,10 @@ int stepPosition = 0;
 int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false;
+boolean startScreen = false;
 void setup() {
   frameRate(30);
-  size(1200, 800);
+  size(1200, 800); 
   background(209);
   customers = new ArrayList<Customer>();
   
@@ -19,6 +20,10 @@ void setup() {
   currentCustomer = customers.get(0);
 }
 void draw(){
+  if (startScreen){
+     PImage bgImage = loadImage("restaurant.jpg");
+     background(bgImage);
+  }
   noStroke();
   textSize(12);
   for(int i = 0; i < 11; i++){
