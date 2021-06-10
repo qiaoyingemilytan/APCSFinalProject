@@ -57,23 +57,7 @@ class Customer{
     return customersOrder;
   } 
   public boolean checkSteps(){
-    boolean correct = true;
-    if (hamburger){
-      correct = order.equals(hamburgerSteps);
-    }
-    if (fries){
-      correct = order.equals(friesSteps);
-    }
-    if (chicken){
-      correct = order.equals(chickenSteps);
-    }
-    if (hotdog){
-      correct = order.equals(hotdogSteps);
-    }
-    if (pizza){
-      correct = order.equals(pizzaSteps);
-    }
-    /*
+    boolean correct = true;    
     if(hamburger){
       boolean complete = false;
       if (order.size() >= 7){
@@ -128,7 +112,7 @@ class Customer{
     }
     if(pizza){
       boolean complete = false;
-      if (order.size() >= 6){
+      if (order.size() >= 4){
       for (int i = 0; i < order.size() - 3; i++){
         if (order.subList(i, i+4).equals(pizzaSteps)){
           complete = true;
@@ -139,6 +123,7 @@ class Customer{
         correct = false;
       }
     }
+    /*
     if (correctSize != order.size()){
       correct = false;
     }
