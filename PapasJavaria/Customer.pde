@@ -204,10 +204,10 @@ class Customer{
    return totalPrice;
  }
  
- public double patienceLevel(int currentPatience){
+ public double patienceLevel(double currentPatience){
    //Patience level is green if the current patience is greater than 50%
    if (currentPatience > patience * 0.5){
-     return 0.3;
+     return 0.25;
    }
    //Patience level is yellow if the current patience is greater than 20%
    else if (currentPatience > patience * 0.2){

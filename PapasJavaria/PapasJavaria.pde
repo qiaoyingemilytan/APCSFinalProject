@@ -59,6 +59,11 @@ void draw(){
     if(i == 8){text("fry mix", i * 120 + 20, 720);}
     if(i == 9){text("sausage", i * 120 + 20, 720);}
   }
+  //Displaying money you have
+  fill(209);
+  rect(0, 0, 100, 50);
+  fill(0);
+  text("$" + (float)((money * 100) / 100), 20, 20);
   //Timer for customer's patience remaining
   if (showPatience){
     currentPatience = (millis() / 1000) - timeElapsed;
@@ -120,7 +125,7 @@ void mousePressed() {
     if(currentCustomer.checkSteps()){
       showPatience = false;
       //The customer pays for the price of the food plus tips depending on how long you took to give them their order
-      money += currentCustomer.totalFoodPrice() + (currentCustomer.totalFoodPrice() * currentCustomer.patienceLevel(currentPatience));
+      money += currentCustomer.totalFoodPrice() + (currentCustomer.totalFoodPrice() * currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience));
       fill(209);
       rect(500, 280, 1200, 100);
       fill(0);
