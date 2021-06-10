@@ -6,12 +6,15 @@ int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false;
 boolean startScreen = false;
+PImage hamburgerImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
   background(209);
-  customers = new ArrayList<Customer>();
   
+  hamburgerImg = loadImage("hamburger.png");
+  
+  customers = new ArrayList<Customer>();
   for (int i = 0; i < 10; i++){
     Customer newCustomer = new Customer(1);
     newCustomer.makeOrder();
@@ -20,6 +23,7 @@ void setup() {
   currentCustomer = customers.get(0);
 }
 void draw(){
+  //image(hamburgerImg, 75, 75);
   if (startScreen){
      PImage bgImage = loadImage("restaurant.jpg");
      background(bgImage);
