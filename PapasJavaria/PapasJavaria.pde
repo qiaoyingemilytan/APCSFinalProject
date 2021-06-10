@@ -2,6 +2,7 @@ ArrayList<Customer> customers;
 Customer currentCustomer;
 int customerNumber = 0;
 int stepPosition = 0;
+int currentPatience, timeElapsed;
 boolean showPatience = false;
 void setup() {
   frameRate(30);
@@ -59,16 +60,30 @@ void draw(){
   }
   //Timer for customer's patience remaining
   if (showPatience){
-    int currentPatience = millis() / 1000;
+    currentPatience = millis() / 1000;
     if (currentPatience <= currentCustomer.customersPatience()){
       fill(209);
       rect(1100, 70, 100, 150);
       fill(0);
-      text((int)currentCustomer.customersPatience() - currentPatience, 1100, 100);
+      text((int)currentCustomer.customersPatience() - (currentPatience - timeElapsed), 1100, 100);
       text("____", 1100, 105);
       //This is to compare the total patience of the customer to the remaining time, might remove it later
       text((int)currentCustomer.customersPatience(), 1100, 120);
     }
+    //Consequence of patience of customer running out
+    else{
+      text("This is too taking too long! I'm leaving and leaving a 1 star review on Yelp! Bye!", 550, 300);
+      if (customerNumber < customers.size() - 1){
+        customerNumber += 1;
+        currentCustomer = customers.get(customerNumber);
+      }
+      else{
+        fill(209);
+        rect(500, 280, 1200, 100);
+        fill(0);
+        text("The last customer abandoned the restaurant. Your shift has ended.", 550, 300);
+      }
+    }   
   }
     
 }
@@ -80,6 +95,7 @@ boolean onButton(int x, int y, int width, int height){
 void mousePressed() {
 //Display customer's order button
   if (onButton(750 - 10, 400 - 20, 170, 50)){
+   timeElapsed = millis() / 1000;
    showPatience = true;
    fill(209);
    rect(0, 0, 1200, 300);
@@ -99,6 +115,7 @@ void mousePressed() {
   if (onButton(450 - 10, 400 - 20, 100, 50)){
     stepPosition = 0;
     if(currentCustomer.checkSteps()){
+      showPatience = false;
       fill(209);
       rect(500, 280, 1200, 100);
       fill(0);
