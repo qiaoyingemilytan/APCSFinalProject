@@ -1,6 +1,7 @@
 import java.util.*;
 class Customer{
   private boolean hamburger, fries, chicken, hotdog, pizza;
+  private double hamburgerPrice = 10, friesPrice = 4, chickenPrice = 8, hotdogPrice = 5, pizzaPrice = 6;
   private double patience;
   private int difficulty;
   private int correctSize;
@@ -182,6 +183,40 @@ class Customer{
   public double customersPatience(){
     return patience;
   }
+  
+ public double totalFoodPrice(){
+   double totalPrice = 0;
+   if (hamburger){
+     totalPrice += hamburgerPrice;
+   }
+   if (fries){
+     totalPrice += friesPrice;
+   }
+   if (chicken){
+     totalPrice += chickenPrice;
+   }
+   if (hotdog){
+     totalPrice += hotdogPrice;
+   }
+   if (pizza){
+     totalPrice += pizzaPrice;
+   }
+   return totalPrice;
+ }
+ 
+ public double patienceLevel(int currentPatience){
+   //Patience level is green if the current patience is greater than 50%
+   if (currentPatience > patience * 0.5){
+     return 0.3;
+   }
+   //Patience level is yellow if the current patience is greater than 20%
+   else if (currentPatience > patience * 0.2){
+     return 0.1;
+   }
+   //Patience level is red if the current patience is under 20%
+   return 0;
+ }
+ 
   public void restartOrder(){
     order.clear();
   }

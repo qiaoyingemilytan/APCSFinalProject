@@ -71,7 +71,7 @@ void draw(){
       //This is to compare the total patience of the customer to the remaining time, might remove it later
       text((int)currentCustomer.customersPatience(), 1100, 120);
     }
-    //Consequence of patience of customer running out
+    //Consequence of customer's patience running out
     else{
       showPatience = false;
       text("This is too taking too long! I'm leaving and leaving a 1 star review on Yelp! Bye!", 550, 300);
@@ -116,16 +116,21 @@ void mousePressed() {
 //Give order button
   if (onButton(450 - 10, 400 - 20, 100, 50)){
     stepPosition = 0;
+    //If you give the correct order
     if(currentCustomer.checkSteps()){
       showPatience = false;
+      //The customer pays for the price of the food plus tips depending on how long you took to give them their order
+      money += currentCustomer.totalFoodPrice() + (currentCustomer.totalFoodPrice() * currentCustomer.patienceLevel(currentPatience));
       fill(209);
       rect(500, 280, 1200, 100);
       fill(0);
       text("Correct Order", 550, 300);
+      //Moves on to the next customer
       if (customerNumber < customers.size() - 1){
         customerNumber += 1;
         currentCustomer = customers.get(customerNumber);
       }
+      //If theres no more customers left, your shift ends
       else {
         fill(209);
         rect(500, 280, 1200, 100);
