@@ -3,6 +3,7 @@ Customer currentCustomer;
 int customerNumber = 0;
 int stepPosition = 0;
 int currentPatience, timeElapsed;
+double money;
 boolean showPatience = false;
 void setup() {
   frameRate(30);
@@ -60,18 +61,19 @@ void draw(){
   }
   //Timer for customer's patience remaining
   if (showPatience){
-    currentPatience = millis() / 1000;
+    currentPatience = (millis() / 1000) - timeElapsed;
     if (currentPatience <= currentCustomer.customersPatience()){
       fill(209);
       rect(1100, 70, 100, 150);
       fill(0);
-      text((int)currentCustomer.customersPatience() - (currentPatience - timeElapsed), 1100, 100);
+      text((int)currentCustomer.customersPatience() - currentPatience, 1100, 100);
       text("____", 1100, 105);
       //This is to compare the total patience of the customer to the remaining time, might remove it later
       text((int)currentCustomer.customersPatience(), 1100, 120);
     }
     //Consequence of patience of customer running out
     else{
+      showPatience = false;
       text("This is too taking too long! I'm leaving and leaving a 1 star review on Yelp! Bye!", 550, 300);
       if (customerNumber < customers.size() - 1){
         customerNumber += 1;
