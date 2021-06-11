@@ -8,7 +8,8 @@ boolean showPatience = false;
 boolean startScreen = true;
 PImage hamburgerImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
 hotdogbunImg, ketchupImg, knifeImg, lettuceImg, mustardImg, onionsImg, ovenImg,
-pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg, sausageImg;
+pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg, sausageImg, waterImg,
+sodaImg, lemonadeImg, watercupImg, sodacupImg, lemonadecupImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
@@ -37,6 +38,12 @@ void setup() {
   tomatoImg = loadImage("tomato.png");
   tomatosauceImg = loadImage("tomatosauce.png");
   sausageImg = loadImage("sausage.png");
+  waterImg = loadImage("water.png");
+  sodaImg = loadImage("soda.png");
+  lemonadeImg = loadImage("lemonade.png");
+  watercupImg = loadImage("waterCup.png");
+  sodacupImg = loadImage("sodaCup.png");
+  lemonadecupImg = loadImage("lemonadeCup.png");
   
   customers = new ArrayList<Customer>();
   for (int i = 0; i < 10; i++){
@@ -111,9 +118,9 @@ void draw(){
   image(doughImg, 740, 455, 100, 100);
   image(frymixImg, 840, 455, 100, 100);
   //Drinks
-  rect(890, 680, 100, 50);
-  rect(960, 680, 100, 50);
-  rect(1030, 680, 100, 50);
+  image(waterImg, 890, 680, 150, 150);
+  image(sodaImg, 960, 680, 150, 150);
+  image(lemonadeImg, 1030, 680, 150, 150);
   fill(0);
   //Bread section
   text("bun", 350, 575);
@@ -142,9 +149,9 @@ void draw(){
   text("dough", 770, 450);
   text("fry mix", 870, 450);
   //Drinks section
-  text("water", 900, 700);
-  text("soda", 970, 700);
-  text("lemonade", 1040, 700);
+  text("water", 945, 690);
+  text("soda", 1015, 690);
+  text("lemonade", 1075, 690);
   //Buttons for displaying order and customer's order
   text("Display customer's order", 750, 400);
   text("Give Order", 450, 400);
