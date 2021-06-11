@@ -6,7 +6,7 @@ int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false;
 boolean startScreen = true;
-PImage hamburgerImg, friesImg, chickenImg, hotdogImg, pizzaImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
+PImage plateImg, hamburgerImg, friesImg, chickenImg, hotdogImg, pizzaImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
 hotdogbunImg, ketchupImg, knifeImg, lettuceImg, mustardImg, onionsImg, ovenImg,
 pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg, sausageImg, waterImg,
 sodaImg, lemonadeImg, watercupImg, sodacupImg, lemonadecupImg;
@@ -16,6 +16,7 @@ void setup() {
   background(209);
   
   //load images
+  plateImg = loadImage("plateImg.png");
   hamburgerImg = loadImage("hamburger.png");
   friesImg = loadImage("fries.png");
   chickenImg = loadImage("chicken.png");
@@ -84,15 +85,17 @@ void draw(){
   noStroke();
   textSize(12);
   fill(#FFFFFF);
-  rect(490, 570, 350, 100);
+  image(plateImg, 500, 570, 100, 100);
+  image(plateImg, 630, 570, 100, 100);
+  image(plateImg, 760, 570, 100, 100);
   fill(0);
-  text("Plates here for putting the food on to serve to customer.", 500, 600);
+  //Plates here for putting the food on to serve to customer
   textSize(12);
 
   //Rectangles
   fill(#FFFFFF);
-  rect(440, 380, 100, 50);
-  rect(740, 380, 170, 50);
+  rect(1050, 280, 100, 50);
+  rect(1050, 340, 100, 50);
   //Bread
   image(bunImg, 340, 585, 100, 100);
   image(bun2Img, 340, 560, 100, 100);
@@ -157,8 +160,8 @@ void draw(){
   text("lemonade", 1075, 690);
   
   //Buttons for displaying order and customer's order
-  text("Get Order", 750, 400);
-  text("Give Order", 450, 400);
+  text("Get Order", 1070, 310);
+  text("Give Order", 1070, 370);
   
   //Displaying money you have
   fill(209);
@@ -229,7 +232,7 @@ void mousePressed() {
   }
   else{
 //Display customer's order button
-  if (onButton(750 - 10, 400 - 20, 170, 50)){
+  if (onButton(1050, 280, 100, 50)){
     showPatience = true;
     fill(209);
     rect(0, 0, 1200, 300);
@@ -238,15 +241,9 @@ void mousePressed() {
       text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 100);
     }
   }
-  //Display order button
-  //if (onButton(600 - 10, 400 - 20, 100, 50)){
-  //  for (int i = 0; i < currentCustomer.getOrder().size(); i++){
-  //    text(currentCustomer.getOrder().get(i), 100 + 100 * i, 200);
-  //  }
-  //}
   
 //Give order button
-  if (onButton(450 - 10, 400 - 20, 100, 50)){
+  if (onButton(1050, 340, 100, 50)){
     stepPosition = 0;
     //If you give the correct order
     if(currentCustomer.checkSteps()){
