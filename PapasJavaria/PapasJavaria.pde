@@ -5,7 +5,7 @@ int stepPosition = 0;
 int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false;
-boolean startScreen = false;
+boolean startScreen = true;
 PImage hamburgerImg, bunImg;
 void setup() {
   frameRate(30);
@@ -29,7 +29,25 @@ void draw(){
   if (startScreen){
      PImage bgImage = loadImage("restaurant.jpg");
      background(bgImage);
+     textAlign(CENTER);
+     //Black outline of the title
+     textSize(102);
+     fill(0);
+     text("Papa's Javaria", width/2, 200);
+     //Title of the game
+     textSize(100);
+     fill(255);
+     text("Papa's Javaria", width/2, 200);
+     //Start button
+     stroke(0);
+     strokeWeight(1.5);
+     rect(500, 400, 200, 80);
+     textSize(50);
+     fill(0);
+     text("START", width/2, 460);
   }
+  else{
+  background(209);
   noStroke();
   textSize(12);
   fill(#FFFFFF);
@@ -68,7 +86,10 @@ void draw(){
   rect(590, 430, 100, 50);
   rect(640, 430, 100, 50);
   rect(690, 430, 100, 50);
-  
+  //Drinks
+  rect(890, 680, 100, 50);
+  rect(960, 680, 100, 50);
+  rect(1030, 680, 100, 50);
   fill(0);
   //Bread section
   text("bun", 350, 620);
@@ -96,6 +117,10 @@ void draw(){
   text("knife", 600, 450);
   text("dough", 650, 450);
   text("fry mix", 700, 450);
+  //Drinks section
+  text("water", 900, 700);
+  text("soda", 970, 700);
+  text("lemonade", 1040, 700);
   //Buttons for displaying order and customer's order
   text("Display customer's order", 750, 400);
   text("Give Order", 450, 400);
@@ -172,7 +197,7 @@ void draw(){
       }
     }   
   }
-    
+ }
 }
 boolean onButton(int x, int y, int width, int height){
   return (mouseX >= x && mouseX < x + width &&
@@ -180,6 +205,14 @@ boolean onButton(int x, int y, int width, int height){
 }
 
 void mousePressed() {
+//START button
+  if (startScreen){
+    if (onButton(500, 400, 200, 80)){
+      startScreen = false;
+      textAlign(BASELINE);
+    }
+  }
+  else{
 //Display customer's order button
   if (onButton(750 - 10, 400 - 20, 170, 50)){
    timeElapsed = millis() / 1000;
@@ -342,6 +375,7 @@ void mousePressed() {
       }
     }
   }
+ }
 }
 void keyPressed() {
 }
