@@ -13,7 +13,7 @@ sodaImg, lemonadeImg, watercupImg, sodacupImg, lemonadecupImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
-  background(209);
+  background(200);
   
   //load images
   plateImg = loadImage("plateImg.png");
@@ -164,7 +164,7 @@ void draw(){
   text("Give Order", 1070, 370);
   
   //Displaying money you have
-  fill(209);
+  fill(200);
   rect(0, 0, 100, 50);
   fill(0);
   text("$" + (float)((money * 100) / 100), 20, 20);
@@ -172,7 +172,7 @@ void draw(){
   if (showPatience){
     currentPatience = (millis() / 1000) - timeElapsed;
     if (currentPatience <= currentCustomer.customersPatience()){
-      fill(209);
+      fill(200);
       rect(1100, 70, 100, 150);
       double patienceLevel = currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience);
       if (patienceLevel == 0.25){
@@ -196,7 +196,7 @@ void draw(){
         currentCustomer = customers.get(customerNumber);
       }
       else{
-        fill(209);
+        fill(200);
         rect(500, 280, 1200, 100);
         fill(0);
         text("The last customer abandoned the restaurant. Your shift has ended.", 550, 300);
@@ -218,11 +218,11 @@ void mousePressed() {
   if (startScreen){
     if (onButton(500, 400, 200, 80)){
       startScreen = false;
-      background(209);
+      background(200);
       textAlign(BASELINE);
       timeElapsed = millis() / 1000;
       showPatience = true;
-      fill(209);
+      fill(200);
       rect(0, 0, 1200, 300);
       fill(0);
       for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
@@ -233,8 +233,9 @@ void mousePressed() {
   else{
 //Display customer's order button
   if (onButton(1050, 280, 100, 50)){
+    timeElapsed = millis() / 1000;
     showPatience = true;
-    fill(209);
+    fill(200);
     rect(0, 0, 1200, 300);
     fill(0);
     for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
@@ -250,7 +251,7 @@ void mousePressed() {
       showPatience = false;
       //The customer pays for the price of the food plus tips depending on how long you took to give them their order
       money += currentCustomer.totalFoodPrice() + (currentCustomer.totalFoodPrice() * currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience));
-      fill(209);
+      fill(200);
       rect(500, 280, 1200, 100);
       fill(0);
       text("Correct Order", 550, 300);
@@ -261,18 +262,18 @@ void mousePressed() {
       }
       //If theres no more customers left, your shift ends
       else {
-        fill(209);
+        fill(200);
         rect(500, 280, 1200, 100);
         fill(0);
         text("Correct order, this is the end of shift", 550, 300);
       }
     }
     else{
-      fill(209);
+      fill(200);
       rect(500, 280, 1200, 100);
       fill(0);
       text("Wrong Order", 550, 300);
-      fill(209);
+      fill(200);
       rect(0, 120, 1200, 100);
       fill(0);
       currentCustomer.restartOrder();
