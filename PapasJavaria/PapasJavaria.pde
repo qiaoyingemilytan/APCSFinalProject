@@ -346,6 +346,12 @@ void mousePressed() {
       difficulty += 1;
       stars = 3;
       customers.clear();
+      for (int i = 0; i < 10; i++){
+        Customer newCustomer = new Customer(difficulty);
+        newCustomer.makeOrder();
+        customers.add(newCustomer);
+      }
+      currentCustomer = customers.get(0);
       transitionScreen = false;
       background(#D3C8AB);
       textAlign(BASELINE);
