@@ -198,19 +198,14 @@ void draw(){
         currentCustomer = customers.get(customerNumber);
       }
       else{
-<<<<<<< HEAD
-        fill(#F5E9C8);
-        rect(500, 280, 1200, 50);
-=======
         if (amountOfReds > (int)(customers.size() * 0.25)){
           stars -= 1;
           if (amountOfReds > (int)(customers.size() * 0.25)){
             stars -= 1;
           }
         }
-        fill(200);
-        rect(500, 280, 1200, 100);
->>>>>>> e604e19d0060fbd54dc94cc612052ef1e8db5eb0
+        fill(#F5E9C8);
+        rect(500, 280, 1200, 50);
         fill(0);
         text("The last customer abandoned the restaurant. Your shift has ended.", 550, 300);
       }
@@ -235,14 +230,9 @@ void mousePressed() {
       textAlign(BASELINE);
       timeElapsed = millis() / 1000;
       showPatience = true;
-<<<<<<< HEAD
+      alreadyClicked = true;
       fill(#F5E9C8);
       rect(0, 0, 1200, 250);
-=======
-      alreadyClicked = true;
-      fill(200);
-      rect(0, 0, 1200, 300);
->>>>>>> e604e19d0060fbd54dc94cc612052ef1e8db5eb0
       fill(0);
       for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
         text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 50);
@@ -251,11 +241,8 @@ void mousePressed() {
   }
   else{
 //Display customer's order button
-  if (onButton(1050, 280, 100, 50)){
+  if (onButton(1050, 280, 100, 50) && !alreadyClicked){
     timeElapsed = millis() / 1000;
-    if(!alreadyClicked){
-      timeElapsed = millis() / 1000;
-    }
     alreadyClicked = true;
     showPatience = true;
     fill(#F5E9C8);
@@ -289,21 +276,15 @@ void mousePressed() {
         currentCustomer = customers.get(customerNumber);
       }
       //If theres no more customers left, your shift ends
-      else {
-<<<<<<< HEAD
-        fill(#F5E9C8);
-        rect(0, 75, 1200, 75);
-=======
-        //The amount of stars you get after the shift depends on the amountOfReds
+      else {//The amount of stars you get after the shift depends on the amountOfReds
         if (amountOfReds > (int)(customers.size() * 0.25)){
           stars -= 1;
           if (amountOfReds > (int)(customers.size() * 0.25)){
             stars -= 1;
           }
         }
-        fill(200);
-        rect(500, 280, 1200, 100);
->>>>>>> e604e19d0060fbd54dc94cc612052ef1e8db5eb0
+        fill(#F5E9C8);
+      rect(0, 0, 1200, 250);
         fill(0);
         text("Correct order, this is the end of shift", 100, 200);
       }
