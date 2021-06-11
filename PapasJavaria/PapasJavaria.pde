@@ -222,10 +222,7 @@ void mousePressed() {
       textAlign(BASELINE);
       timeElapsed = millis() / 1000;
       showPatience = true;
-<<<<<<< HEAD
       alreadyClicked = true;
-=======
->>>>>>> 053cbc9d1710a0415d9bc80e3d9f44afe463f789
       fill(200);
       rect(0, 0, 1200, 300);
       fill(0);
@@ -238,13 +235,10 @@ void mousePressed() {
 //Display customer's order button
   if (onButton(1050, 280, 100, 50)){
     timeElapsed = millis() / 1000;
-<<<<<<< HEAD
     if(!alreadyClicked){
       timeElapsed = millis() / 1000;
     }
     alreadyClicked = true;
-=======
->>>>>>> 053cbc9d1710a0415d9bc80e3d9f44afe463f789
     showPatience = true;
     fill(200);
     rect(0, 0, 1200, 300);
