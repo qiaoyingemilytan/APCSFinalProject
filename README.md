@@ -7,6 +7,9 @@ You work at a restaurant called Papa’s Javaria. During your shift, many custom
 https://docs.google.com/document/d/1zl40j49Ib5RUjhPSt_oFYJmowwYiNY7DIoC5XMlTUdw/edit?usp=sharing
 
 Development Log
+5/24/21
+
+Meicheng Wang: Created Customer class with instance variables such as the food booleans and the ArrayLists representing steps for each food item.
 
 5/26/21
 
@@ -22,6 +25,17 @@ Qiao Ying (Emily) Tan: I finished up the buttons, adding text and if statements 
 
 Meicheng Wang: I updated the Customer class so that addStep(String step) only adds the step to order now instead of checking for added food strings to make booleans true. Instead the food booleans becoming true is based on a 15 out of 100 chance in the makeOrder() method which no longer returns the ArrayList order but only determines which foods the customer is ordering. I also made a new instance variable so that you are not able to serve all the correct foods while also providing excess ingredients in the order. I also updated the checkSteps() method so that it uses for loops to check a sublist of the order ArrayList in order to check if it is equivalent to the food steps ArrayLists.
 
+6/1/21
+
+Meicheng Wang: I updated the Customer class so that the checkSteps checked if correctSize integer was equal to the size of order in order to check not only if you ahd served all the correct foods in the correct order to the customer, but to see if you gave any excess ingredients or foods that you should not have.
+
+6/2/21
+
+Meicheng Wang: I added a patience instance variable to the Customer class, that represents the time in seconds that a customer has before they leave out of impatience from them not getting their correct order. I increased the chances for each food to be ordered in the makeOrder method because I felt like 15% chance for a food to be ordered was a big opportunity for a customer to order nothing, which I didn't want to happen at all. I added a difficulty instance variable, which I planned to only go up to 3, from 1. The patience of customer would be determined by the difficulty level in the formula: patience = 200 / (difficulty + Math.random()), with the Math.random() addition being there to add some variability to the patience times instead of it being uniform for each customer per difficulty level. 
+
+6/3/21
+
+Meicheng Wang: I updated the PapasJavaria class so that there would be a button called giveOrder that would serve the order to the customer when you clicked. This button utilized checkSteps() to check if the order was correct, and if the it wasn't it would call the restartOrder method and clear the order arraylist. I was also revising my code in order to achieve multi food ordering from customers, so I changed the food if conditional statments so that they would not check a sublist of the order arraylist unless order was above a certain size to prevent a NullPointerException from occuring. Also I created a constructor for the Customer class, with a parameter difficulty that took in the difficulty level to determine the patience of the customer.
 6/4/21
 Qiao Ying (Emily) Tan: I added an inProgress boolean to check if the current order was still being run and so checkSteps did not need to be constantly run, and instead only be run when you give an order. I also created makeOrder which generates a random integer and based on that gives the customer a random order. I then got rid of inProgress and instead used customerNumber to keep track of the current customer. Once the customer's order was finished, customerNumber increases and moves onto the next. I added a serve customer button to make and display their order.
 
