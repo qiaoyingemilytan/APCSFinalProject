@@ -6,9 +6,9 @@ int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false;
 boolean startScreen = true;
-PImage hamburgerImg, bunImg, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
+PImage hamburgerImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
 hotdogbunImg, ketchupImg, knifeImg, lettuceImg, mustardImg, onionsImg, ovenImg,
-pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg;
+pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg, sausageImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
@@ -17,6 +17,7 @@ void setup() {
   //load images
   hamburgerImg = loadImage("hamburger.png");
   bunImg = loadImage("bun.png");
+  bun2Img = loadImage("bun2.png");
   cheeseImg = loadImage("cheese.png");
   deepfryImg = loadImage("deepfry.png");
   doughImg = loadImage("dough.png");
@@ -35,6 +36,7 @@ void setup() {
   relishImg = loadImage("relish.png");
   tomatoImg = loadImage("tomato.png");
   tomatosauceImg = loadImage("tomatosauce.png");
+  sausageImg = loadImage("sausage.png")
   
   customers = new ArrayList<Customer>();
   for (int i = 0; i < 10; i++){
@@ -82,17 +84,18 @@ void draw(){
   rect(440, 380, 100, 50);
   rect(740, 380, 170, 50);
   //Bread
-  image(bunImg, 340, 600, 100, 100);
-  rect(340, 680, 100, 50);
+  image(bunImg, 340, 585, 100, 100);
+  image(bun2Img, 340, 560, 100, 100);
+  image(hotdogbunImg, 335, 690, 100, 100);
   //Appliances
-  rect(890, 480, 100, 50);
-  rect(890, 580, 100, 50);
-  rect(990, 580, 100, 50);
+  image(ovenImg, 890, 480, 100, 100);
+  image(griddleImg, 890, 580, 100, 100);
+  image(deepfryImg, 990, 580, 100, 100);
   //Vegetables
-  rect(190, 580, 100, 50);
-  rect(190, 630, 100, 50);
-  rect(190, 680, 100, 50);
-  rect(190, 730, 100, 50);
+  image(tomatoImg, 190, 575, 100, 100);
+  image(lettuceImg, 190, 700, 80,80);
+  image(onionsImg, 90, 575, 90, 90);
+  image(potatoImg, 90, 700, 75, 75);
   //Meat
   rect(490, 730, 100, 50);
   rect(590, 730, 100, 50);
@@ -113,17 +116,17 @@ void draw(){
   rect(1030, 680, 100, 50);
   fill(0);
   //Bread section
-  text("bun", 350, 620);
-  text("hot dog bun", 350, 700);
+  text("bun", 350, 575);
+  text("hot dog bun", 350, 690);
   //Appliances section
-  text("oven", 900, 500);
+  text("pizza oven", 900, 500);
   text("griddle", 900, 600);
   text("deep fry", 1000, 600);
   //Vegetables section
-  text("lettuce", 200, 600);
-  text("tomato", 200, 650);
-  text("onions", 200, 700);
-  text("potato", 200, 750);
+  text("lettuce", 200, 690);
+  text("tomato", 200, 575);
+  text("potato", 100, 690);
+  text("onions", 100, 575);
   //Meat section
   text("patty", 500, 750);
   text("sausage", 600, 750);
