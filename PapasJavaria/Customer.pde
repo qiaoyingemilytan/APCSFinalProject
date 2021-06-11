@@ -172,11 +172,9 @@ class Customer{
         correct = false;
       }
     }
-    /*
     if (correctSize != order.size()){
       correct = false;
     }
-    */
     return correct;
   }
   
@@ -187,6 +185,7 @@ class Customer{
     if (wantsDrink < 0.5){
         number = numberOfFoods[(int)Math.floor(Math.random()*(numberOfFoods.length - 1))]; //This makes is so that a customer can only order up to two foods if they want a drink
         float drink = (float)Math.random() * 3;
+        correctSize += 1;
         if (drink < 1)
           water = true;
         else if (drink < 2)
@@ -199,34 +198,27 @@ class Customer{
     }
     for (int i = 0; i < number; i++){
       float orderNum = (float)Math.random() * 5;
-      if (orderNum < 1)
+      if (orderNum < 1){
         hamburger = true;
-      else if (orderNum < 2)
+        correctSize += 7;
+      }
+      else if (orderNum < 2){
         fries = true;
-      else if (orderNum < 3)
+        correctSize += 3;
+      }
+      else if (orderNum < 3){
         chicken = true;
-      else if (orderNum < 4)
+        correctSize += 3;
+      }
+      else if (orderNum < 4){
         hotdog = true;
-      else if (orderNum < 5)
+        correctSize += 6;
+      }
+      else if (orderNum < 5){
         pizza = true;
+        correctSize += 4;
+      }
     }
-    /*
-    if (Math.random() * 100 < 25)
-      hamburger = true;
-      correctSize += 7;
-    if (Math.random() * 100 < 25)
-      fries = true;
-      correctSize += 3;
-    if (Math.random() * 100 < 25)
-      chicken = true;
-      correctSize += 3;
-    if (Math.random() * 100 < 25)
-      hotdog = true;
-      correctSize += 6;
-    if (Math.random() * 100 < 25)
-      pizza = true;
-      correctSize += 4;
-      */
     patience = 200 / (difficulty + Math.random());
   }
   public double customersPatience(){
