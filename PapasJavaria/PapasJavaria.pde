@@ -242,6 +242,9 @@ boolean onButton(int x, int y, int width, int height){
 }
 
 void mousePressed() {
+  noStroke();
+  textSize(12);
+  fill(0);
 //START button
   if (startScreen){
     if (onButton(500, 400, 200, 80)){
@@ -324,6 +327,15 @@ void mousePressed() {
   text("sausage" , 100 + 100 * stepPosition, 200); stepPosition++;}
   if(onButton(740, 700, 80, 80)){currentCustomer.addStep("raw chicken");
   text("raw chicken" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  //vegetables
+  if (onButton(190, 575, 100, 100)){ currentCustomer.addStep("tomato"); 
+  text("tomato" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
+  if (onButton(190, 700, 80, 80)){ currentCustomer.addStep("lettuce"); 
+  text("lettuce" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
+  if (onButton(90, 575, 90, 90)){ currentCustomer.addStep("onions"); 
+  text("onions" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
+  if (onButton(90, 700, 75, 75)){ currentCustomer.addStep("potato"); 
+  text("potato" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
   //condiments
   if(onButton(140, 455, 45, 100)){currentCustomer.addStep("ketchup");
   text("ketchup" , 100 + 100 * stepPosition, 200); stepPosition++;}
