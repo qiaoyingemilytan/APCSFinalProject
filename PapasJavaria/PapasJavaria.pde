@@ -207,7 +207,36 @@ void draw(){
       if (customerNumber < customers.size() - 1){
         customerNumber += 1;
         currentCustomer = customers.get(customerNumber);
+        timeElapsed = millis() / 1000;
+        showPatience = true;
+        alreadyClicked = true;
         displayCustomer();
+        for(int i = 0; i < currentCustomer.getMeals().size(); i++){
+        if(currentCustomer.getMeals().get(i).equals("hamburger")){
+          image(hamburgerImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("fries")){
+          image(friesImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("chicken")){
+          image(chickenImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("hotdog")){
+          image(hotdogImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("pizza")){
+          image(pizzaImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("water")){
+          image(watercupImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("soda")){
+          image(sodacupImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("lemonade")){
+          image(lemonadecupImg, 100 + 100 * i, 300, 100, 100);
+        }
+      }
       }
       else{
         if (amountOfReds > (int)(customers.size() * 0.25)){
