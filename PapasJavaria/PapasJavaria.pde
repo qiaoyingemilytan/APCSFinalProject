@@ -4,18 +4,19 @@ int customerNumber = 0;
 int stepPosition = 0;
 int currentPatience, timeElapsed;
 double money;
-boolean showPatience = false;
+boolean showPatience = false, alreadyClicked = false;
 boolean startScreen = true;
-PImage hamburgerImg, friesImg, chickenImg, hotdogImg, pizzaImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
+PImage plateImg, hamburgerImg, friesImg, chickenImg, hotdogImg, pizzaImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
 hotdogbunImg, ketchupImg, knifeImg, lettuceImg, mustardImg, onionsImg, ovenImg,
 pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg, sausageImg, waterImg,
 sodaImg, lemonadeImg, watercupImg, sodacupImg, lemonadecupImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
-  background(209);
+  background(200);
   
   //load images
+  plateImg = loadImage("plateImg.png");
   hamburgerImg = loadImage("hamburger.png");
   friesImg = loadImage("fries.png");
   chickenImg = loadImage("chicken.png");
@@ -84,15 +85,17 @@ void draw(){
   noStroke();
   textSize(12);
   fill(#FFFFFF);
-  rect(490, 570, 350, 100);
+  image(plateImg, 500, 570, 100, 100);
+  image(plateImg, 630, 570, 100, 100);
+  image(plateImg, 760, 570, 100, 100);
   fill(0);
-  text("Plates here for putting the food on to serve to customer.", 500, 600);
+  //Plates here for putting the food on to serve to customer
   textSize(12);
 
   //Rectangles
   fill(#FFFFFF);
-  rect(440, 380, 100, 50);
-  rect(740, 380, 170, 50);
+  rect(1050, 280, 100, 50);
+  rect(1050, 340, 100, 50);
   //Bread
   image(bunImg, 340, 585, 100, 100);
   image(bun2Img, 340, 560, 100, 100);
@@ -155,51 +158,13 @@ void draw(){
   text("water", 945, 690);
   text("soda", 1015, 690);
   text("lemonade", 1075, 690);
+  
   //Buttons for displaying order and customer's order
-  text("Display customer's order", 750, 400);
-  text("Give Order", 450, 400);
-  /*
-  for(int i = 0; i < 11; i++){
-    fill(#FFFFFF);
-    rect(i * 120 + 10, 600, 100, 50);
-    
-    //rect(600 - 10, 400 - 20, 100, 50);
-    
-    fill(0);
-    if(i == 0){text("bun", i * 120 + 20, 620);}
-    if(i == 1){text("patty", i * 120 + 20, 620);}
-    if(i == 2){text("griddle", i * 120 + 20, 620);}
-    if(i == 3){text("tomato", i * 120 + 20, 620);}
-    if(i == 4){text("lettuce", i * 120 + 20, 620);}
-    if(i == 5){text("onions", i * 120 + 20, 620);}
-    if(i == 6){text("potato", i * 120 + 20, 620);}
-    if(i == 7){text("knife", i * 120 + 20, 620);}
-    if(i == 8){text("deep fry", i * 120 + 20, 620);}
-    if(i == 9){text("hot dog bun", i * 120 + 20, 620);}
-    if(i == 10){
-      text("Give Order", 450, 400);
-      //text("Display Order", 600, 400);
-      text("Display customer's order", 750, 400);
-    }
-  }
-  for(int i = 0; i < 10; i++){
-    fill(#FFFFFF);
-    rect(i * 120 + 10, 700, 100, 50);
-    fill(0);
-    if(i == 0){text("ketchup", i * 120 + 20, 720);}
-    if(i == 1){text("mustard", i * 120 + 20, 720);}
-    if(i == 2){text("relish", i * 120 + 20, 720);}
-    if(i == 3){text("dough", i * 120 + 20, 720);}
-    if(i == 4){text("tomato sauce", i * 120 + 20, 720);}
-    if(i == 5){text("cheese", i * 120 + 20, 720);}
-    if(i == 6){text("oven", i * 120 + 20, 720);}
-    if(i == 7){text("raw chicken", i * 120 + 20, 720);}
-    if(i == 8){text("fry mix", i * 120 + 20, 720);}
-    if(i == 9){text("sausage", i * 120 + 20, 720);}
-  }
-  */
+  text("Get Order", 1070, 310);
+  text("Give Order", 1070, 370);
+  
   //Displaying money you have
-  fill(209);
+  fill(200);
   rect(0, 0, 100, 50);
   fill(0);
   text("$" + (float)((money * 100) / 100), 20, 20);
@@ -207,7 +172,7 @@ void draw(){
   if (showPatience){
     currentPatience = (millis() / 1000) - timeElapsed;
     if (currentPatience <= currentCustomer.customersPatience()){
-      fill(209);
+      fill(200);
       rect(1100, 70, 100, 150);
       double patienceLevel = currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience);
       if (patienceLevel == 0.25){
@@ -231,7 +196,7 @@ void draw(){
         currentCustomer = customers.get(customerNumber);
       }
       else{
-        fill(209);
+        fill(200);
         rect(500, 280, 1200, 100);
         fill(0);
         text("The last customer abandoned the restaurant. Your shift has ended.", 550, 300);
@@ -253,38 +218,46 @@ void mousePressed() {
   if (startScreen){
     if (onButton(500, 400, 200, 80)){
       startScreen = false;
-      background(209);
+      background(200);
       textAlign(BASELINE);
+      timeElapsed = millis() / 1000;
+      showPatience = true;
+      alreadyClicked = true;
+      fill(200);
+      rect(0, 0, 1200, 300);
+      fill(0);
+      for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
+        text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 100);
+      }
     }
   }
   else{
 //Display customer's order button
-  if (onButton(750 - 10, 400 - 20, 170, 50)){
-   timeElapsed = millis() / 1000;
-   showPatience = true;
-   fill(209);
-   rect(0, 0, 1200, 300);
-   fill(0);
-   for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
+  if (onButton(1050, 280, 100, 50)){
+    timeElapsed = millis() / 1000;
+    if(!alreadyClicked){
+      timeElapsed = millis() / 1000;
+    }
+    alreadyClicked = true;
+    showPatience = true;
+    fill(200);
+    rect(0, 0, 1200, 300);
+    fill(0);
+    for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
       text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 100);
-   }
+    }
   }
-  //Display order button
-  //if (onButton(600 - 10, 400 - 20, 100, 50)){
-  //  for (int i = 0; i < currentCustomer.getOrder().size(); i++){
-  //    text(currentCustomer.getOrder().get(i), 100 + 100 * i, 200);
-  //  }
-  //}
   
 //Give order button
-  if (onButton(450 - 10, 400 - 20, 100, 50)){
+  if (onButton(1050, 340, 100, 50)){
     stepPosition = 0;
     //If you give the correct order
     if(currentCustomer.checkSteps()){
       showPatience = false;
+      alreadyClicked = false;
       //The customer pays for the price of the food plus tips depending on how long you took to give them their order
       money += currentCustomer.totalFoodPrice() + (currentCustomer.totalFoodPrice() * currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience));
-      fill(209);
+      fill(200);
       rect(500, 280, 1200, 100);
       fill(0);
       text("Correct Order", 550, 300);
@@ -295,23 +268,25 @@ void mousePressed() {
       }
       //If theres no more customers left, your shift ends
       else {
-        fill(209);
+        fill(200);
         rect(500, 280, 1200, 100);
         fill(0);
         text("Correct order, this is the end of shift", 550, 300);
       }
     }
     else{
-      fill(209);
+      fill(200);
       rect(500, 280, 1200, 100);
       fill(0);
       text("Wrong Order", 550, 300);
-      fill(209);
+      fill(200);
       rect(0, 120, 1200, 100);
       fill(0);
       currentCustomer.restartOrder();
     }     
   }
+  fill(0);
+  textSize(12);
   //bread buttons
   if(onButton(340, 570, 100, 80)){currentCustomer.addStep("bun");
   text("bun" , 100 + 100 * stepPosition, 200); stepPosition++;}
@@ -324,6 +299,15 @@ void mousePressed() {
   text("griddle" , 100 + 100 * stepPosition, 200); stepPosition++;}
   if(onButton(1050, 590, 100, 80)){currentCustomer.addStep("deep fry");
   text("deep fry" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  //vegetables
+  if(onButton(190, 575, 100, 80)){currentCustomer.addStep("tomato");
+  text("tomato" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(190, 700, 100, 80)){currentCustomer.addStep("lettuce");
+  text("lettuce" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(90, 575, 90, 80)){currentCustomer.addStep("onions");
+  text("onions" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(90, 700, 90, 80)){currentCustomer.addStep("potato");
+  text("potato" , 100 + 100 * stepPosition, 200); stepPosition++;}
   //meat
   if(onButton(500, 740, 80, 30)){currentCustomer.addStep("patty");
   text("patty" , 100 + 100 * stepPosition, 200); stepPosition++;}
@@ -331,15 +315,6 @@ void mousePressed() {
   text("sausage" , 100 + 100 * stepPosition, 200); stepPosition++;}
   if(onButton(740, 700, 80, 80)){currentCustomer.addStep("raw chicken");
   text("raw chicken" , 100 + 100 * stepPosition, 200); stepPosition++;}
-  //vegetables
-  if (onButton(190, 575, 100, 100)){ currentCustomer.addStep("tomato"); 
-  text("tomato" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
-  if (onButton(190, 700, 80, 80)){ currentCustomer.addStep("lettuce"); 
-  text("lettuce" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
-  if (onButton(90, 575, 90, 90)){ currentCustomer.addStep("onions"); 
-  text("onions" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
-  if (onButton(90, 700, 75, 75)){ currentCustomer.addStep("potato"); 
-  text("potato" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
   //condiments
   if(onButton(140, 455, 45, 100)){currentCustomer.addStep("ketchup");
   text("ketchup" , 100 + 100 * stepPosition, 200); stepPosition++;}
@@ -358,12 +333,12 @@ void mousePressed() {
   text("dough" , 100 + 100 * stepPosition, 200); stepPosition++;}
   if(onButton(840, 455, 80, 100)){currentCustomer.addStep("fry mix");
   text("fry mix" , 100 + 100 * stepPosition, 200); stepPosition++;}
-  //Drinks
-  if(onButton(960, 680, 50, 150)){currentCustomer.addStep("water");
+  //drinks
+  if(onButton(910, 680, 90, 150)){currentCustomer.addStep("water");
   text("water" , 100 + 100 * stepPosition, 200); stepPosition++;}
-  if(onButton(1030, 680, 50, 150)){currentCustomer.addStep("soda");
+  if(onButton(1005, 680, 60, 150)){currentCustomer.addStep("soda");
   text("soda" , 100 + 100 * stepPosition, 200); stepPosition++;}
-  if(onButton(1100, 680, 50, 150)){currentCustomer.addStep("lemonade");
+  if(onButton(1070, 680, 60, 150)){currentCustomer.addStep("lemonade");
   text("lemonade" , 100 + 100 * stepPosition, 200); stepPosition++;}
  }
 }
