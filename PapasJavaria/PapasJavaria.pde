@@ -2,6 +2,8 @@ ArrayList<Customer> customers;
 Customer currentCustomer;
 int customerNumber = 0;
 int stepPosition = 0;
+int stars = 3;
+int amountOfReds = 0;
 int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false, alreadyClicked = false;
@@ -191,11 +193,18 @@ void draw(){
     else{
       showPatience = false;
       text("This is too taking too long! I'm leaving and leaving a 1 star review on Yelp! Bye!", 550, 300);
+      amountOfReds += 1;
       if (customerNumber < customers.size() - 1){
         customerNumber += 1;
         currentCustomer = customers.get(customerNumber);
       }
       else{
+        if (amountOfReds > (int)(customers.size() * 0.25)){
+          stars -= 1;
+          if (amountOfReds > (int)(customers.size() * 0.25)){
+            stars -= 1;
+          }
+        }
         fill(200);
         rect(500, 280, 1200, 100);
         fill(0);
@@ -255,6 +264,10 @@ void mousePressed() {
     if(currentCustomer.checkSteps()){
       showPatience = false;
       alreadyClicked = false;
+      //Checks if the customers patience level is red
+      if (currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience) == 0){
+        amountOfReds += 1;
+      }  
       //The customer pays for the price of the food plus tips depending on how long you took to give them their order
       money += currentCustomer.totalFoodPrice() + (currentCustomer.totalFoodPrice() * currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience));
       fill(200);
@@ -268,6 +281,13 @@ void mousePressed() {
       }
       //If theres no more customers left, your shift ends
       else {
+        //The amount of stars you get after the shift depends on the amountOfReds
+        if (amountOfReds > (int)(customers.size() * 0.25)){
+          stars -= 1;
+          if (amountOfReds > (int)(customers.size() * 0.25)){
+            stars -= 1;
+          }
+        }
         fill(200);
         rect(500, 280, 1200, 100);
         fill(0);
