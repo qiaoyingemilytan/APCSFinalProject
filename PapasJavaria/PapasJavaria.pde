@@ -177,8 +177,8 @@ void draw(){
   if (showPatience){
     currentPatience = (millis() / 1000) - timeElapsed;
     if (currentPatience <= currentCustomer.customersPatience()){
-      fill(#F5E9C8);
-      rect(1100, 70, 100, 50);
+      fill(#BFAE7F);
+      rect(1090, 65, 75, 50);
       double patienceLevel = currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience);
       if (patienceLevel == 0.25){
         fill(0, 204, 102); //Green level
@@ -195,7 +195,7 @@ void draw(){
     //Consequence of customer's patience running out
     else{
       showPatience = false;
-      text("This is too taking too long! I'm leaving and leaving a 1 star review on Yelp! Bye!", 550, 300);
+      text("This is too taking too long! I'm leaving and leaving a 1 star review on Yelp! Bye!", 100, 200);
       amountOfReds += 1;
       if (customerNumber < customers.size() - 1){
         customerNumber += 1;
@@ -211,7 +211,7 @@ void draw(){
         fill(#F5E9C8);
         rect(500, 280, 1200, 50);
         fill(0);
-        text("The last customer abandoned the restaurant. Your shift has ended.", 550, 300);
+        text("The last customer abandoned the restaurant. Your shift has ended.", 100, 200);
       }
     }   
   }
@@ -241,6 +241,32 @@ void mousePressed() {
       for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
         text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 50);
       }
+      for(int i = 0; i < currentCustomer.getMeals().size(); i++){
+        if(currentCustomer.getMeals().get(i).equals("hamburger")){
+          image(hamburgerImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("fries")){
+          image(friesImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("chicken")){
+          image(chickenImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("hotdog")){
+          image(hotdogImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("pizza")){
+          image(pizzaImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("water")){
+          image(watercupImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("soda")){
+          image(sodacupImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("lemonade")){
+          image(lemonadecupImg, 100 + 100 * i, 300, 100, 100);
+        }
+      }
     }
   }
   else{
@@ -255,6 +281,33 @@ void mousePressed() {
     for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
       text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 50);
     }
+    
+    for(int i = 0; i < currentCustomer.getMeals().size(); i++){
+        if(currentCustomer.getMeals().get(i).equals("hamburger")){
+          image(hamburgerImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("fries")){
+          image(friesImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("chicken")){
+          image(chickenImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("hotdog")){
+          image(hotdogImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("pizza")){
+          image(pizzaImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("water")){
+          image(watercupImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("soda")){
+          image(sodacupImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("lemonade")){
+          image(lemonadecupImg, 100 + 100 * i, 300, 100, 100);
+        }
+      }
   }
   
 //Give order button

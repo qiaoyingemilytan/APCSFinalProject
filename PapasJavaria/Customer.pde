@@ -52,45 +52,37 @@ class Customer{
   public ArrayList<String> customersOrder(){
     ArrayList<String> customersOrder = new ArrayList<String>();
     if(hamburger){
-      meals.add("hamburger");
       for (String step : hamburgerSteps){
         customersOrder.add(step);
       }
     }
     if(fries){
-      meals.add("fries");
       for (String step : friesSteps){
         customersOrder.add(step);
       }
     }
     if(chicken){
-      meals.add("chicken");
       for (String step : chickenSteps){
         customersOrder.add(step);
       }
     }
     if(hotdog){
-      meals.add("hotdog");
       for (String step : hotdogSteps){
         customersOrder.add(step);
       }
     }
     if(pizza){
-      meals.add("pizza");
       for (String step : pizzaSteps){
         customersOrder.add(step);
       }
     }
     if(water){
-      meals.add("water");
       customersOrder.add("water");
     }
     if(soda){
-      meals.add("soda");
       customersOrder.add("soda");
     }
     if(lemonade){
-      meals.add("lemonade");
       customersOrder.add("lemonade");
     }
     return customersOrder;
@@ -213,34 +205,42 @@ class Customer{
     if (wantsDrink < 0.5){
         float drink = (float)Math.random() * 3;
         correctSize += 1;
-        if (drink < 1)
+        if (drink < 1){
           water = true;
-        else if (drink < 2)
+          meals.add("water");}
+        else if (drink < 2){
           soda = true;
-        else if (drink < 3)
+          meals.add("soda");}
+        else if (drink < 3){
           lemonade = true;
+          meals.add("lemonade");}
     }
     int number = numberOfFoods[(int)Math.floor(Math.random()*numberOfFoods.length)];
     for (int i = 0; i < number; i++){
       float orderNum = (float)Math.random() * 5;
       if (orderNum < 1){
         hamburger = true;
+        meals.add("hamburger");
         correctSize += 7;
       }
       else if (orderNum < 2){
         fries = true;
+        meals.add("fries");
         correctSize += 3;
       }
       else if (orderNum < 3){
         chicken = true;
+        meals.add("chicken");
         correctSize += 3;
       }
       else if (orderNum < 4){
         hotdog = true;
+        meals.add("hotdog");
         correctSize += 6;
       }
       else if (orderNum < 5){
         pizza = true;
+        meals.add("pizza");
         correctSize += 4;
       }
     }
