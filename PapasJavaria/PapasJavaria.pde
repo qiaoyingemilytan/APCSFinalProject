@@ -203,6 +203,7 @@ void mousePressed() {
       textAlign(BASELINE);
     }
   }
+  else{
 //Display customer's order button
   if (onButton(750 - 10, 400 - 20, 170, 50)){
    timeElapsed = millis() / 1000;
@@ -365,6 +366,7 @@ void mousePressed() {
       }
     }
   }
+ }
 }
 void keyPressed() {
 }
