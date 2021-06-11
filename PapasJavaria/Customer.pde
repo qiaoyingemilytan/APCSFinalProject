@@ -7,6 +7,7 @@ class Customer{
   private int difficulty;
   private int correctSize;
   private int[] numberOfFoods = {1, 2};
+  private ArrayList<String> meals = new ArrayList<String>();
   private ArrayList<String> order = new ArrayList<String>();
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
   Arrays.asList("bun", "patty", "griddle", "tomato", "lettuce", "onions", "bun"));
@@ -18,50 +19,63 @@ class Customer{
   Arrays.asList("hot dog bun", "sausage", "griddle", "ketchup", "mustard", "relish"));
   private ArrayList<String> pizzaSteps = new ArrayList<String>(
   Arrays.asList("dough", "tomato sauce", "cheese", "oven"));
-  
+
   public Customer(int difficulty){
     this.difficulty = difficulty;
   }
   public void addStep(String step){
     order.add(step);
   }
+  
+  public ArrayList<String> getMeals(){
+    return meals;
+  }
+   
   public ArrayList<String> getOrder(){
     return order;
   }
   public ArrayList<String> customersOrder(){
     ArrayList<String> customersOrder = new ArrayList<String>();
     if(hamburger){
+      meals.add("hamburger");
       for (String step : hamburgerSteps){
         customersOrder.add(step);
       }
     }
     if(fries){
+      meals.add("fries");
       for (String step : friesSteps){
         customersOrder.add(step);
       }
     }
     if(chicken){
+      meals.add("chicken");
       for (String step : chickenSteps){
         customersOrder.add(step);
       }
     }
     if(hotdog){
+      meals.add("hotdog");
       for (String step : hotdogSteps){
         customersOrder.add(step);
       }
     }
     if(pizza){
+      meals.add("pizza");
       for (String step : pizzaSteps){
         customersOrder.add(step);
       }
     }
     if(water){
+      meals.add("water");
       customersOrder.add("water");
     }
     if(soda){
+      meals.add("soda");
       customersOrder.add("soda");
     }
     if(lemonade){
+      meals.add("lemonade");
       customersOrder.add("lemonade");
     }
     return customersOrder;
