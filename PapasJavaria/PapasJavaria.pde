@@ -6,14 +6,35 @@ int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false;
 boolean startScreen = true;
-PImage hamburgerImg, bunImg;
+PImage hamburgerImg, bunImg, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
+hotdogbunImg, ketchupImg, knifeImg, lettuceImg, mustardImg, onionsImg, ovenImg,
+pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
   background(209);
   
+  //load images
   hamburgerImg = loadImage("hamburger.png");
   bunImg = loadImage("bun.png");
+  cheeseImg = loadImage("cheese.png");
+  deepfryImg = loadImage("deepfry.png");
+  doughImg = loadImage("dough.png");
+  frymixImg = loadImage("frymix.png");
+  griddleImg = loadImage("griddle.png");
+  hotdogbunImg = loadImage("hotdogbun.png");
+  ketchupImg = loadImage("ketchup.png");
+  knifeImg = loadImage("knife.png");
+  lettuceImg = loadImage("lettuce.png");
+  mustardImg = loadImage("mustard.png");
+  onionsImg = loadImage("onions.png");
+  ovenImg = loadImage("oven.png");
+  pattyImg = loadImage("patty.png");
+  potatoImg = loadImage("potato.png");
+  rawchickenImg = loadImage("rawchicken.png");
+  relishImg = loadImage("relish.png");
+  tomatoImg = loadImage("tomato.png");
+  tomatosauceImg = loadImage("tomatosauce.png");
   
   customers = new ArrayList<Customer>();
   for (int i = 0; i < 10; i++){
