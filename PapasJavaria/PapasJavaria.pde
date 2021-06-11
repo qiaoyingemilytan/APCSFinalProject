@@ -200,6 +200,7 @@ void draw(){
       if (customerNumber < customers.size() - 1){
         customerNumber += 1;
         currentCustomer = customers.get(customerNumber);
+        displayCustomer();
       }
       else{
         if (amountOfReds > (int)(customers.size() * 0.25)){
@@ -222,6 +223,27 @@ boolean onButton(int x, int y, int width, int height){
   mouseY >= y && mouseY <= y + height);
 }
 
+void displayCustomer(){
+  String currentColor = currentCustomer.getColor();
+  int x = 650;
+  int y = 230;
+  int l = 200;
+  if (currentColor == "red"){
+    image(customerredImg, x, y, l, l);
+  }
+  if (currentColor == "blue"){
+    image(customerblueImg, x, y, l, l);
+  }
+  if (currentColor == "green"){
+    image(customergreenImg, x, y, l, l);
+  }
+  if (currentColor == "orange"){
+    image(customerorangeImg, x, y, l, l);
+  }
+  if (currentColor == "purple"){
+    image(customerpurpleImg, x, y, l, l);
+  }
+}
 void mousePressed() {
   noStroke();
   textSize(12);
@@ -235,6 +257,7 @@ void mousePressed() {
       timeElapsed = millis() / 1000;
       showPatience = true;
       alreadyClicked = true;
+      displayCustomer();
       fill(#F5E9C8);
       rect(0, 0, 1200, 250);
       fill(0);
@@ -331,6 +354,7 @@ void mousePressed() {
       if (customerNumber < customers.size() - 1){
         customerNumber += 1;
         currentCustomer = customers.get(customerNumber);
+        displayCustomer();
       }
       //If theres no more customers left, your shift ends
       else {//The amount of stars you get after the shift depends on the amountOfReds
