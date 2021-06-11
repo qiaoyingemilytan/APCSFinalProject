@@ -218,7 +218,7 @@ class Customer{
     int number = numberOfFoods[(int)Math.floor(Math.random()*numberOfFoods.length)];
     for (int i = 0; i < number; i++){
       float orderNum = (float)Math.random() * 5;
-      if (orderNum < 1){
+      if (orderNum < 1 && !hotdog){
         hamburger = true;
         meals.add("hamburger");
         correctSize += 7;
@@ -233,7 +233,7 @@ class Customer{
         meals.add("chicken");
         correctSize += 3;
       }
-      else if (orderNum < 4){
+      else if (orderNum < 4 && !hamburger){
         hotdog = true;
         meals.add("hotdog");
         correctSize += 6;
