@@ -2,9 +2,11 @@ ArrayList<Customer> customers;
 Customer currentCustomer;
 int customerNumber = 0;
 int stepPosition = 0;
+int stars = 3;
+int amountOfReds = 0;
 int currentPatience, timeElapsed;
 double money;
-boolean showPatience = false;
+boolean showPatience = false, alreadyClicked = false;
 boolean startScreen = true;
 PImage plateImg, hamburgerImg, friesImg, chickenImg, hotdogImg, pizzaImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
 hotdogbunImg, ketchupImg, knifeImg, lettuceImg, mustardImg, onionsImg, ovenImg,
@@ -190,13 +192,25 @@ void draw(){
     else{
       showPatience = false;
       text("This is too taking too long! I'm leaving and leaving a 1 star review on Yelp! Bye!", 550, 300);
+      amountOfReds += 1;
       if (customerNumber < customers.size() - 1){
         customerNumber += 1;
         currentCustomer = customers.get(customerNumber);
       }
       else{
+<<<<<<< HEAD
         fill(#F5E9C8);
         rect(500, 280, 1200, 50);
+=======
+        if (amountOfReds > (int)(customers.size() * 0.25)){
+          stars -= 1;
+          if (amountOfReds > (int)(customers.size() * 0.25)){
+            stars -= 1;
+          }
+        }
+        fill(200);
+        rect(500, 280, 1200, 100);
+>>>>>>> e604e19d0060fbd54dc94cc612052ef1e8db5eb0
         fill(0);
         text("The last customer abandoned the restaurant. Your shift has ended.", 550, 300);
       }
@@ -221,8 +235,14 @@ void mousePressed() {
       textAlign(BASELINE);
       timeElapsed = millis() / 1000;
       showPatience = true;
+<<<<<<< HEAD
       fill(#F5E9C8);
       rect(0, 0, 1200, 250);
+=======
+      alreadyClicked = true;
+      fill(200);
+      rect(0, 0, 1200, 300);
+>>>>>>> e604e19d0060fbd54dc94cc612052ef1e8db5eb0
       fill(0);
       for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
         text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 50);
@@ -233,6 +253,10 @@ void mousePressed() {
 //Display customer's order button
   if (onButton(1050, 280, 100, 50)){
     timeElapsed = millis() / 1000;
+    if(!alreadyClicked){
+      timeElapsed = millis() / 1000;
+    }
+    alreadyClicked = true;
     showPatience = true;
     fill(#F5E9C8);
     rect(0, 0, 1200, 200);
@@ -248,6 +272,11 @@ void mousePressed() {
     //If you give the correct order
     if(currentCustomer.checkSteps()){
       showPatience = false;
+      alreadyClicked = false;
+      //Checks if the customers patience level is red
+      if (currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience) == 0){
+        amountOfReds += 1;
+      }  
       //The customer pays for the price of the food plus tips depending on how long you took to give them their order
       money += currentCustomer.totalFoodPrice() + (currentCustomer.totalFoodPrice() * currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience));
       fill(#F5E9C8);
@@ -261,8 +290,20 @@ void mousePressed() {
       }
       //If theres no more customers left, your shift ends
       else {
+<<<<<<< HEAD
         fill(#F5E9C8);
         rect(0, 75, 1200, 75);
+=======
+        //The amount of stars you get after the shift depends on the amountOfReds
+        if (amountOfReds > (int)(customers.size() * 0.25)){
+          stars -= 1;
+          if (amountOfReds > (int)(customers.size() * 0.25)){
+            stars -= 1;
+          }
+        }
+        fill(200);
+        rect(500, 280, 1200, 100);
+>>>>>>> e604e19d0060fbd54dc94cc612052ef1e8db5eb0
         fill(0);
         text("Correct order, this is the end of shift", 100, 200);
       }
