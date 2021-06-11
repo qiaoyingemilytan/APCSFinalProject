@@ -6,7 +6,7 @@ int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false;
 boolean startScreen = true;
-PImage hamburgerImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
+PImage hamburgerImg, friesImg, chickenImg, hotdogImg, pizzaImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
 hotdogbunImg, ketchupImg, knifeImg, lettuceImg, mustardImg, onionsImg, ovenImg,
 pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg, sausageImg, waterImg,
 sodaImg, lemonadeImg, watercupImg, sodacupImg, lemonadecupImg;
@@ -17,6 +17,10 @@ void setup() {
   
   //load images
   hamburgerImg = loadImage("hamburger.png");
+  friesImg = loadImage("fries.png");
+  chickenImg = loadImage("chicken.png");
+  hotdogImg = loadImage("hotdog.png");
+  pizzaImg = loadImage("pizza.png");
   bunImg = loadImage("bun.png");
   bun2Img = loadImage("bun2.png");
   cheeseImg = loadImage("cheese.png");
