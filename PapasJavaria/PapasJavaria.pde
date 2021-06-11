@@ -287,6 +287,15 @@ void draw(){
           image(lemonadecupImg, 100 + 100 * i, 300, 100, 100);
         }
       }
+      //update steps
+      fill(#F5E9C8);
+      rect(0, 0, 1200, 250);
+      fill(0);
+      textSize(12);
+      for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
+        text(currentCustomer.customersOrder().get(i), 50 + 100 * i, 50);
+      }
+      
       }
       else{
         if (amountOfReds > (int)(customers.size() * 0.25)){
