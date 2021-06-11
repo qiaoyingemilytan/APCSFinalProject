@@ -358,6 +358,13 @@ void mousePressed() {
   text("dough" , 100 + 100 * stepPosition, 200); stepPosition++;}
   if(onButton(840, 455, 80, 100)){currentCustomer.addStep("fry mix");
   text("fry mix" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  //Drinks
+  if(onButton(960, 680, 50, 150)){currentCustomer.addStep("water");
+  text("water" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(1030, 680, 50, 150)){currentCustomer.addStep("soda");
+  text("soda" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(1100, 680, 50, 150)){currentCustomer.addStep("lemonade");
+  text("lemonade" , 100 + 100 * stepPosition, 200); stepPosition++;}
  }
 }
 void keyPressed() {
