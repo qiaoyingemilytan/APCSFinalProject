@@ -2,16 +2,17 @@ ArrayList<Customer> customers;
 Customer currentCustomer;
 int customerNumber = 0;
 int stepPosition = 0;
+int difficulty = 1;
 int stars = 3;
 int amountOfReds = 0;
 int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false, alreadyClicked = false;
-boolean startScreen = true;
+boolean startScreen = true, transitionScreen = false, endScreen = false, failScreen = false;
 PImage plateImg, hamburgerImg, friesImg, chickenImg, hotdogImg, pizzaImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
 hotdogbunImg, ketchupImg, knifeImg, lettuceImg, mustardImg, onionsImg, ovenImg,
 pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg, sausageImg, waterImg,
-sodaImg, lemonadeImg, watercupImg, sodacupImg, lemonadecupImg, customerredImg, customerblueImg, customergreenImg, customerorangeImg, customerpurpleImg, orderbubbleImg;
+sodaImg, lemonadeImg, watercupImg, sodacupImg, lemonadecupImg, customerredImg, customerblueImg, customergreenImg, customerorangeImg, customerpurpleImg, orderbubbleImg, starImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
@@ -56,9 +57,10 @@ void setup() {
   customerorangeImg = loadImage("customerOrange.png");
   customerpurpleImg = loadImage("customerPurple.png");
   orderbubbleImg = loadImage("customersOrder.png");
+  starImg = loadImage("star.png");
   customers = new ArrayList<Customer>();
   for (int i = 0; i < 10; i++){
-    Customer newCustomer = new Customer(1);
+    Customer newCustomer = new Customer(difficulty);
     newCustomer.makeOrder();
     customers.add(newCustomer);
   }
@@ -93,6 +95,50 @@ void draw(){
      textSize(16);
      text("Your goal at Papa's Javaria is to serve all the customers \n under a certain amount of time before they get upset. A customer's order will be displayed \n for you, as well as instructions to complete the order. \n Click on the corresponding ingredients and appliances to \n complete the order, and then get the order for the next customer. Good luck!" , width/2, 250);
      }
+  else if (transitionScreen){
+    background(0);
+    textAlign(CENTER);
+    textSize(100);
+    fill(255);
+    text("END OF SHIFT", width/2, 200);
+    if (stars == 1){
+      fill(255, 0, 0);
+      image(starImg, width/2 - 75, 300, 150, 150);
+      text("YOU FAILED", width/2, 555);
+    }
+    else if (difficulty == 3){
+      textSize(80);
+      text("THANK YOU FOR PLAYING!", width/2, 555);
+      if (stars == 2){
+        image(starImg, width/2 - 150, 300, 150, 150);
+        image(starImg, width/2, 300, 150, 150);
+      }
+      if (stars == 3){
+        image(starImg, width/2 - 225, 300, 150, 150);
+        image(starImg, width/2 - 75, 300, 150, 150);
+        image(starImg, width/2 + 75, 300, 150, 150);
+      }
+      fill(0, 204, 102);
+      text("$" + (float)money, width/2, 700);
+    }
+    else{
+      if (stars == 2){
+        image(starImg, width/2 - 150, 300, 150, 150);
+        image(starImg, width/2, 300, 150, 150);
+      }
+      if (stars == 3){
+        image(starImg, width/2 - 225, 300, 150, 150);
+        image(starImg, width/2 - 75, 300, 150, 150);
+        image(starImg, width/2  + 75, 300, 150, 150);
+      }
+      stroke(0);
+      strokeWeight(1.5);
+      rect(450, 500, 300, 80);
+      textSize(50);
+      fill(0);
+      text("NEXT LEVEL", width/2, 555);
+    }
+  }
   else{
   noStroke();
   textSize(12);
@@ -177,9 +223,12 @@ void draw(){
   
   //Displaying money you have
   fill(#F5E9C8);
-  rect(0, 0, 100, 25);
+  stroke(0);
+  rect(595, 180, 90, 30);
+  noStroke();
   fill(0);
-  text("$" + (float)((money * 100) / 100), 20, 20);
+  textSize(20);
+  text("$" + (float)((money * 100) / 100), 600, 200);
   //Timer for customer's patience remaining
   if (showPatience){
     currentPatience = (millis() / 1000) - timeElapsed;
@@ -202,9 +251,10 @@ void draw(){
     //Consequence of customer's patience running out
     else{
       showPatience = false;
-      text("This is too taking too long! I'm leaving and leaving a 1 star review on Yelp! Bye!", 100, 200);
+
       amountOfReds += 1;
-      if (customerNumber < customers.size() - 1){
+      if (customerNumber < customers.size() - 2){
+        text("Bye!", 100, 200);
         customerNumber += 1;
         currentCustomer = customers.get(customerNumber);
         timeElapsed = millis() / 1000;
@@ -248,7 +298,8 @@ void draw(){
         fill(#F5E9C8);
         rect(500, 280, 1200, 50);
         fill(0);
-        text("The last customer abandoned the restaurant. Your shift has ended.", 100, 200);
+        text("The last customer abandoned the restaurant.", 100, 200);
+        nextLevel();
       }
     }   
   }
@@ -281,10 +332,61 @@ void displayCustomer(){
     image(customerpurpleImg, x, y, l, l);
   }
 }
+
+void nextLevel(){
+    transitionScreen = true;
+}
 void mousePressed() {
   noStroke();
   textSize(12);
   fill(0);
+  //NEXT LEVEL button
+  if (transitionScreen){
+    if (onButton(450, 500, 300, 80)){
+      difficulty += 1;
+      stars = 3;
+      customers.clear();
+      transitionScreen = false;
+      background(#D3C8AB);
+      textAlign(BASELINE);
+      timeElapsed = millis() / 1000;
+      showPatience = true;
+      alreadyClicked = true;
+      displayCustomer();
+      fill(#F5E9C8);
+      rect(0, 0, 1200, 250);
+      fill(0);
+      for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
+        text(currentCustomer.customersOrder().get(i), 50 + 100 * i, 50);
+      }
+      for(int i = 0; i < currentCustomer.getMeals().size(); i++){
+        if(currentCustomer.getMeals().get(i).equals("hamburger")){
+          image(hamburgerImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("fries")){
+          image(friesImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("chicken")){
+          image(chickenImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("hotdog")){
+          image(hotdogImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("pizza")){
+          image(pizzaImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("water")){
+          image(watercupImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("soda")){
+          image(sodacupImg, 100 + 100 * i, 300, 100, 100);
+        }
+        if(currentCustomer.getMeals().get(i).equals("lemonade")){
+          image(lemonadecupImg, 100 + 100 * i, 300, 100, 100);
+        }
+      }
+    }
+  }
 //START button
   if (startScreen){
     if (onButton(500, 400, 200, 80)){
@@ -299,7 +401,7 @@ void mousePressed() {
       rect(0, 0, 1200, 250);
       fill(0);
       for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
-        text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 50);
+        text(currentCustomer.customersOrder().get(i), 50 + 100 * i, 50);
       }
       for(int i = 0; i < currentCustomer.getMeals().size(); i++){
         if(currentCustomer.getMeals().get(i).equals("hamburger")){
@@ -339,7 +441,7 @@ void mousePressed() {
     rect(0, 0, 1200, 200);
     fill(0);
     for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
-      text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 50);
+      text(currentCustomer.customersOrder().get(i), 50 + 100 * i, 50);
     }
     //fill(#D3C8AB);
     //rect(0, 275, 500, 150);
@@ -370,6 +472,7 @@ void mousePressed() {
           image(lemonadecupImg, 100 + 100 * i, 300, 100, 100);
         }
       }
+
   }
   
 //Give order button
@@ -388,7 +491,10 @@ void mousePressed() {
       fill(#F5E9C8);
       rect(0, 180, 1200, 50);
       fill(0);
-      text("Correct Order", 100, 200);
+      textSize(20);
+      fill(0, 204, 102);
+      text("Correct Order", 400, 200);
+      fill(0);
       //Moves on to the next customer
       if (customerNumber < customers.size() - 1){
         customerNumber += 1;
@@ -404,16 +510,19 @@ void mousePressed() {
           }
         }
         fill(#F5E9C8);
-      rect(0, 0, 1200, 250);
+        rect(0, 0, 1200, 250);
         fill(0);
-        text("Correct order, this is the end of shift", 100, 200);
+        text("Correct Order", 400, 200);//End of shift
+        nextLevel();
       }
     }
     else{
       fill(#F5E9C8);
       rect(0, 180, 1200, 50);
-      fill(0);
-      text("Wrong Order", 100, 200);
+      fill(255,0, 0);
+      textSize(20);
+      text("Wrong Order", 400, 200);
+      textSize(12);
       fill(#F5E9C8);
       rect(0, 75, 1200, 75);
       fill(0);
@@ -424,57 +533,57 @@ void mousePressed() {
   textSize(12);
   //bread buttons
   if(onButton(340, 570, 100, 80)){currentCustomer.addStep("bun");
-  text("bun" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("bun" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(335, 690, 100, 80)){currentCustomer.addStep("hot dog bun");
-  text("hot dog bun" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("hot dog bun" , 50 + 100 * stepPosition, 100); stepPosition++;}
   //appliances
   if(onButton(990, 470, 100, 100)){currentCustomer.addStep("oven");
-  text("oven" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("oven" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(900, 590, 80, 80)){currentCustomer.addStep("griddle");
-  text("griddle" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("griddle" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(1050, 590, 100, 80)){currentCustomer.addStep("deep fry");
-  text("deep fry" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("deep fry" , 50 + 100 * stepPosition, 100); stepPosition++;}
   //vegetables
   if(onButton(190, 575, 100, 80)){currentCustomer.addStep("tomato");
-  text("tomato" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("tomato" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(190, 700, 100, 80)){currentCustomer.addStep("lettuce");
-  text("lettuce" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("lettuce" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(90, 575, 90, 80)){currentCustomer.addStep("onions");
-  text("onions" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("onions" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(90, 700, 90, 80)){currentCustomer.addStep("potato");
-  text("potato" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("potato" , 50 + 100 * stepPosition, 100); stepPosition++;}
   //meat
   if(onButton(500, 740, 80, 30)){currentCustomer.addStep("patty");
-  text("patty" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("patty" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(620, 695, 90, 90)){currentCustomer.addStep("sausage");
-  text("sausage" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("sausage" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(740, 700, 80, 80)){currentCustomer.addStep("raw chicken");
-  text("raw chicken" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("raw chicken" , 50 + 100 * stepPosition, 100); stepPosition++;}
   //condiments
   if(onButton(140, 455, 45, 100)){currentCustomer.addStep("ketchup");
-  text("ketchup" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("ketchup" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(210, 455, 45, 100)){currentCustomer.addStep("mustard");
-  text("mustard" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("mustard" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(280, 455, 45, 100)){currentCustomer.addStep("relish");
-  text("relish" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("relish" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(350, 475, 100, 60)){currentCustomer.addStep("tomato sauce");
-  text("tomato sauce" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("tomato sauce" , 50 + 100 * stepPosition, 100); stepPosition++;}
   //misc
   if(onButton(540, 470, 100, 75)){currentCustomer.addStep("cheese");
-  text("cheese" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("cheese" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(640, 455, 100, 80)){currentCustomer.addStep("knife");
-  text("knife" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("knife" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(740, 455, 100, 80)){currentCustomer.addStep("dough");
-  text("dough" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("dough" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(840, 455, 80, 100)){currentCustomer.addStep("fry mix");
-  text("fry mix" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("fry mix" , 50 + 100 * stepPosition, 100); stepPosition++;}
   //drinks
   if(onButton(910, 680, 90, 150)){currentCustomer.addStep("water");
-  text("water" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("water" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(1005, 680, 60, 150)){currentCustomer.addStep("soda");
-  text("soda" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("soda" , 50 + 100 * stepPosition, 100); stepPosition++;}
   if(onButton(1070, 680, 60, 150)){currentCustomer.addStep("lemonade");
-  text("lemonade" , 100 + 100 * stepPosition, 100); stepPosition++;}
+  text("lemonade" , 50 + 100 * stepPosition, 100); stepPosition++;}
  }
 }
 void keyPressed() {
