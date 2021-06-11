@@ -5,13 +5,16 @@ int stepPosition = 0;
 int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false;
-boolean startScreen = false;
+boolean startScreen = true;
+PImage hamburgerImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
   background(209);
-  customers = new ArrayList<Customer>();
   
+  hamburgerImg = loadImage("hamburger.png");
+  
+  customers = new ArrayList<Customer>();
   for (int i = 0; i < 10; i++){
     Customer newCustomer = new Customer(1);
     newCustomer.makeOrder();
@@ -20,10 +23,29 @@ void setup() {
   currentCustomer = customers.get(0);
 }
 void draw(){
+  //image(hamburgerImg, 75, 75);
   if (startScreen){
      PImage bgImage = loadImage("restaurant.jpg");
      background(bgImage);
+     textAlign(CENTER);
+     //Black outline of the title
+     textSize(102);
+     fill(0);
+     text("Papa's Javaria", width/2, 200);
+     //Title of the game
+     textSize(100);
+     fill(255);
+     text("Papa's Javaria", width/2, 200);
+     //Start button
+     stroke(0);
+     strokeWeight(1.5);
+     rect(500, 400, 200, 80);
+     textSize(50);
+     fill(0);
+     text("START", width/2, 460);
   }
+  else{
+  background(209);
   noStroke();
   textSize(12);
   fill(#FFFFFF);
@@ -166,7 +188,7 @@ void draw(){
       }
     }   
   }
-    
+ }
 }
 boolean onButton(int x, int y, int width, int height){
   return (mouseX >= x && mouseX < x + width &&
@@ -174,6 +196,13 @@ boolean onButton(int x, int y, int width, int height){
 }
 
 void mousePressed() {
+//START button
+  if (startScreen){
+    if (onButton(500, 400, 200, 80)){
+      startScreen = false;
+      textAlign(BASELINE);
+    }
+  }
 //Display customer's order button
   if (onButton(750 - 10, 400 - 20, 170, 50)){
    timeElapsed = millis() / 1000;
