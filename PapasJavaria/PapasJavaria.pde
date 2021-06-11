@@ -151,49 +151,11 @@ void draw(){
   text("water", 945, 690);
   text("soda", 1015, 690);
   text("lemonade", 1075, 690);
+  
   //Buttons for displaying order and customer's order
   text("Display customer's order", 750, 400);
   text("Give Order", 450, 400);
-  /*
-  for(int i = 0; i < 11; i++){
-    fill(#FFFFFF);
-    rect(i * 120 + 10, 600, 100, 50);
-    
-    //rect(600 - 10, 400 - 20, 100, 50);
-    
-    fill(0);
-    if(i == 0){text("bun", i * 120 + 20, 620);}
-    if(i == 1){text("patty", i * 120 + 20, 620);}
-    if(i == 2){text("griddle", i * 120 + 20, 620);}
-    if(i == 3){text("tomato", i * 120 + 20, 620);}
-    if(i == 4){text("lettuce", i * 120 + 20, 620);}
-    if(i == 5){text("onions", i * 120 + 20, 620);}
-    if(i == 6){text("potato", i * 120 + 20, 620);}
-    if(i == 7){text("knife", i * 120 + 20, 620);}
-    if(i == 8){text("deep fry", i * 120 + 20, 620);}
-    if(i == 9){text("hot dog bun", i * 120 + 20, 620);}
-    if(i == 10){
-      text("Give Order", 450, 400);
-      //text("Display Order", 600, 400);
-      text("Display customer's order", 750, 400);
-    }
-  }
-  for(int i = 0; i < 10; i++){
-    fill(#FFFFFF);
-    rect(i * 120 + 10, 700, 100, 50);
-    fill(0);
-    if(i == 0){text("ketchup", i * 120 + 20, 720);}
-    if(i == 1){text("mustard", i * 120 + 20, 720);}
-    if(i == 2){text("relish", i * 120 + 20, 720);}
-    if(i == 3){text("dough", i * 120 + 20, 720);}
-    if(i == 4){text("tomato sauce", i * 120 + 20, 720);}
-    if(i == 5){text("cheese", i * 120 + 20, 720);}
-    if(i == 6){text("oven", i * 120 + 20, 720);}
-    if(i == 7){text("raw chicken", i * 120 + 20, 720);}
-    if(i == 8){text("fry mix", i * 120 + 20, 720);}
-    if(i == 9){text("sausage", i * 120 + 20, 720);}
-  }
-  */
+  
   //Displaying money you have
   fill(209);
   rect(0, 0, 100, 50);
@@ -305,6 +267,8 @@ void mousePressed() {
       currentCustomer.restartOrder();
     }     
   }
+  fill(0);
+  textSize(12);
   //bread buttons
   if(onButton(340, 570, 100, 80)){currentCustomer.addStep("bun");
   text("bun" , 100 + 100 * stepPosition, 200); stepPosition++;}
@@ -317,6 +281,15 @@ void mousePressed() {
   text("griddle" , 100 + 100 * stepPosition, 200); stepPosition++;}
   if(onButton(1050, 590, 100, 80)){currentCustomer.addStep("deep fry");
   text("deep fry" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  //vegetables
+  if(onButton(190, 575, 100, 80)){currentCustomer.addStep("tomato");
+  text("tomato" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(190, 700, 100, 80)){currentCustomer.addStep("lettuce");
+  text("lettuce" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(90, 575, 90, 80)){currentCustomer.addStep("onions");
+  text("onions" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(90, 700, 90, 80)){currentCustomer.addStep("potato");
+  text("potato" , 100 + 100 * stepPosition, 200); stepPosition++;}
   //meat
   if(onButton(500, 740, 80, 30)){currentCustomer.addStep("patty");
   text("patty" , 100 + 100 * stepPosition, 200); stepPosition++;}
@@ -342,6 +315,13 @@ void mousePressed() {
   text("dough" , 100 + 100 * stepPosition, 200); stepPosition++;}
   if(onButton(840, 455, 80, 100)){currentCustomer.addStep("fry mix");
   text("fry mix" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  //drinks
+  if(onButton(910, 680, 90, 150)){currentCustomer.addStep("water");
+  text("water" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(1005, 680, 60, 150)){currentCustomer.addStep("soda");
+  text("soda" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(1070, 680, 60, 150)){currentCustomer.addStep("lemonade");
+  text("lemonade" , 100 + 100 * stepPosition, 200); stepPosition++;}
  }
 }
 void keyPressed() {
