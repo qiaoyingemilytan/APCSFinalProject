@@ -6,13 +6,14 @@ int currentPatience, timeElapsed;
 double money;
 boolean showPatience = false;
 boolean startScreen = false;
-PImage hamburgerImg;
+PImage hamburgerImg, bunImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
   background(209);
   
   hamburgerImg = loadImage("hamburger.png");
+  bunImg = loadImage("bun.png");
   
   customers = new ArrayList<Customer>();
   for (int i = 0; i < 10; i++){
@@ -24,6 +25,7 @@ void setup() {
 }
 void draw(){
   //image(hamburgerImg, 75, 75);
+  
   if (startScreen){
      PImage bgImage = loadImage("restaurant.jpg");
      background(bgImage);
@@ -38,10 +40,10 @@ void draw(){
 
   //Rectangles
   fill(#FFFFFF);
-  rect(450 - 10, 400 - 20, 100, 50);
-  rect(750 - 10, 400 - 20, 170, 50);
+  rect(440, 380, 100, 50);
+  rect(740, 380, 170, 50);
   //Bread
-  rect(340, 600, 100, 50);
+  image(bunImg, 340, 600, 100, 100);
   rect(340, 680, 100, 50);
   //Appliances
   rect(890, 480, 100, 50);
