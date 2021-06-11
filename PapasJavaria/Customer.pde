@@ -196,7 +196,6 @@ class Customer{
     }
     else{
       int number = numberOfFoods[(int)Math.floor(Math.random()*numberOfFoods.length)];
-    }
     for (int i = 0; i < number; i++){
       float orderNum = (float)Math.random() * 5;
       if (orderNum < 1)
@@ -210,6 +209,7 @@ class Customer{
       else if (orderNum < 5)
         pizza = true;
     }
+  }
     /*
     if (Math.random() * 100 < 25)
       hamburger = true;
