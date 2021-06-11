@@ -1,7 +1,8 @@
 import java.util.*;
 class Customer{
   private boolean hamburger, fries, chicken, hotdog, pizza;
-  private double hamburgerPrice = 10, friesPrice = 4, chickenPrice = 8, hotdogPrice = 5, pizzaPrice = 6;
+  private boolean water, soda, lemonade;
+  private double hamburgerPrice = 10, friesPrice = 4, chickenPrice = 8, hotdogPrice = 5, pizzaPrice = 6, waterPrice = 1.5, sodaPrice = 2, lemonadePrice = 2.5;
   private double patience;
   private int difficulty;
   private int correctSize;
@@ -53,7 +54,16 @@ class Customer{
       for (String step : pizzaSteps){
         customersOrder.add(step);
       }
-    } 
+    }
+    if(water){
+      customersOrder.add("water");
+    }
+    if(soda){
+      customersOrder.add("soda");
+    }
+    if(lemonade){
+      customersOrder.add("lemonade");
+    }
     return customersOrder;
   } 
   public boolean checkSteps(){
@@ -123,6 +133,45 @@ class Customer{
         correct = false;
       }
     }
+    if (water){
+      boolean complete = false;
+      if (order.size() >= 1){
+      for (int i = 0; i < order.size(); i++){
+        if (order.get(i).equals("water")){
+          complete = true;
+        }
+      }
+      }
+      if (!complete){
+        correct = false;
+      }
+    }
+    if (soda){
+      boolean complete = false;
+      if (order.size() >= 1){
+      for (int i = 0; i < order.size(); i++){
+        if (order.get(i).equals("soda")){
+          complete = true;
+        }
+      }
+      }
+      if (!complete){
+        correct = false;
+      }
+    }
+    if (lemonade){
+      boolean complete = false;
+      if (order.size() >= 1){
+      for (int i = 0; i < order.size(); i++){
+        if (order.get(i).equals("lemonade")){
+          complete = true;
+        }
+      }
+      }
+      if (!complete){
+        correct = false;
+      }
+    }
     /*
     if (correctSize != order.size()){
       correct = false;
@@ -133,6 +182,17 @@ class Customer{
   
   public void makeOrder(){
     int number = numberOfFoods[(int)Math.floor(Math.random()*numberOfFoods.length)];
+    float wantsDrink = (float)Math.random() * 1;
+    //50 percent chance of the customer wanting a drink
+    if (wantsDrink < 0.5){
+        float drink = (float)Math.random() * 3;
+        if (drink < 1)
+          water = true;
+        else if (drink < 2)
+          soda = true;
+        else if (drink < 3)
+          lemonade = true;
+    }
     for (int i = 0; i < number; i++){
       float orderNum = (float)Math.random() * 5;
       if (orderNum < 1)
@@ -185,6 +245,15 @@ class Customer{
    }
    if (pizza){
      totalPrice += pizzaPrice;
+   }
+   if (water){
+     totalPrice += waterPrice;
+   }
+   if (soda){
+     totalPrice += sodaPrice;
+   }
+   if (lemonade){
+     totalPrice += lemonadePrice;
    }
    return totalPrice;
  }

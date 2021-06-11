@@ -84,7 +84,10 @@ void draw(){
   rect(590, 430, 100, 50);
   rect(640, 430, 100, 50);
   rect(690, 430, 100, 50);
-  
+  //Drinks
+  rect(890, 680, 100, 50);
+  rect(960, 680, 100, 50);
+  rect(1030, 680, 100, 50);
   fill(0);
   //Bread section
   text("bun", 350, 620);
@@ -112,6 +115,10 @@ void draw(){
   text("knife", 600, 450);
   text("dough", 650, 450);
   text("fry mix", 700, 450);
+  //Drinks section
+  text("water", 900, 700);
+  text("soda", 970, 700);
+  text("lemonade", 1040, 700);
   //Buttons for displaying order and customer's order
   text("Display customer's order", 750, 400);
   text("Give Order", 450, 400);
