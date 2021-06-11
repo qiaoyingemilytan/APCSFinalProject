@@ -84,8 +84,14 @@ void draw(){
      rect(500, 400, 200, 80);
      textSize(50);
      fill(0);
-     text("START", width/2, 460);
-  }
+     text("START", width/2, 465);
+     fill(0);
+     textSize(16.2);
+     text("Your goal at Papa's Javaria is to serve all the customers \n under a certain amount of time before they get upset. A customer's order will be displayed \n for you, as well as instructions to complete the order. \n Click on the corresponding ingredients and appliances to \n complete the order, and then get the order for the next customer. Good luck!" , width/2, 250);
+     fill(#FFFFFF);
+     textSize(16);
+     text("Your goal at Papa's Javaria is to serve all the customers \n under a certain amount of time before they get upset. A customer's order will be displayed \n for you, as well as instructions to complete the order. \n Click on the corresponding ingredients and appliances to \n complete the order, and then get the order for the next customer. Good luck!" , width/2, 250);
+     }
   else{
   noStroke();
   textSize(12);
