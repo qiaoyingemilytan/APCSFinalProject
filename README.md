@@ -45,10 +45,20 @@ Qiao Ying (Emily) Tan: I added an inProgress boolean to check if the current ord
 
 6/6/21
 
-Meicheng Wang: I again committed changes so taht I adjusted the checkSteps() method under the assumption only single food orders would be made. I believed that the randomization was broken because when I ran the program and clicked the Display Customer's Order button, it would only display hamburgers steps. Also when I precisely added the hamburger ingredients to the order in the correct order and gave in the order, it returned "Wrong Order" which I believed to be the fault of the checkSteps code. I also upped the chances of other foods being ordered to attempt to prevent the consistent hamburger orders.
+Meicheng Wang: I again committed changes so taht I adjusted the checkSteps() method under the assumption only single food orders would be made. I believed that the randomization was broken because when I ran the program and clicked the Display Customer's Order button, it would only display hamburgers steps. Also when I precisely added the hamburger ingredients to the order in the correct order and gave in the order, it returned "Wrong Order" which I believed to be the fault of the checkSteps code. I also upped the chances of other foods being ordered to attempt to prevent the consistent hamburger orders. 
+
+6/7/21
+
+Meicheng Wang: I was working on changes that I wanted to commit, but then I unexpectedly had to merge files, which caused a lot of errors in my code. I found a mistake in the customersOrder() method where for each food boolean if conditional statement, every single food boolean, if it was true, would add hamburgerSteps to the returned ArrayList, thus explaining why every time I clicked the display customer order button, it would show the steps for a hamburger, and I would get "Wrong Order", since the hamburger boolean wouldn't be true when I added hamburger steps. I also updated the display customer order button so that you could move on to the next customer's order without the previous customer's order overlapping it.
 
 6/8/21
+
+Meicheng Wang: I created a message that would display after all the customers had been served.
+
 Qiao Ying (Emily) Tan: I fixed the issue of the steps overlapping when redoing orders by adding a rectangle behind the text each time. I did the same thing to the correct and wrong order messages. I got rid of the display order button and by using stepPosition to keep track of the step of the order, displayed the steps as the user inputted them.
 
+6/9/21
+
+Meicheng Wang: I fixed the message that displayed at the end of your shift, so it displayed properly. I also created a timer system that calculated the amount of patience the customer you were serving had left in seconds. I used millis() in order to create this timer, and also created consequences for the timer hitting zero, which was the customer saying unique dialogue and then leaving without paying. I also created a money system, with each food item having unique prices, and although the price of the food did not have any taxes involved, I created a patienceLevel() method and totalPrice() method that determined the amount of tips a customer would pay along with the price of the food, depending on their patience level and the total price of the food they ordered. I also shifted back to multi food orders by switching back to the old makeOrder() code but this time with correct conditionals so that it would actually be possible to check the sublists of order. I also deleted the orderNumber() method because it didn't serve any purpose.
 6/10/21
 Qiao Ying (Emily) Tan: I digitally drew all the ingredients with transparent backgrounds and replaced the rectangular buttons with the corresponding images. I altered the sizing and layout of all the ingredients/appliances images and texts to fit well together. I also reordered and fixed more overlapping issues on the order box and the customer bubble. In the customer class, I created a meals arraylist to keep track of the meals, and meals get added when makeOrder() sets the corresponding orders true. These meals show up as images underneath the order box for the worker to see.
