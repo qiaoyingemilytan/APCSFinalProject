@@ -6,6 +6,7 @@ class Customer{
   private double patience;
   private int difficulty;
   private int correctSize;
+  private String customerColor;
   private int[] numberOfFoods = {1, 2};
   private ArrayList<String> order = new ArrayList<String>();
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
@@ -21,12 +22,26 @@ class Customer{
   
   public Customer(int difficulty){
     this.difficulty = difficulty;
+    double randomColor = Math.random() * 5;
+    if (randomColor < 1)
+      customerColor = "red";
+    else if (randomColor < 2)
+      customerColor = "blue";
+    else if (randomColor < 3)
+      customerColor = "green";
+    else if (randomColor < 4)
+      customerColor = "orange";
+    else if (randomColor < 5)
+      customerColor = "purple";
   }
   public void addStep(String step){
     order.add(step);
   }
   public ArrayList<String> getOrder(){
     return order;
+  }
+  public String getColor(){
+    return customerColor;
   }
   public ArrayList<String> customersOrder(){
     ArrayList<String> customersOrder = new ArrayList<String>();
