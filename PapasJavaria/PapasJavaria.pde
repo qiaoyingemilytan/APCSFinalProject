@@ -36,7 +36,7 @@ void setup() {
   relishImg = loadImage("relish.png");
   tomatoImg = loadImage("tomato.png");
   tomatosauceImg = loadImage("tomatosauce.png");
-  sausageImg = loadImage("sausage.png")
+  sausageImg = loadImage("sausage.png");
   
   customers = new ArrayList<Customer>();
   for (int i = 0; i < 10; i++){
@@ -74,7 +74,7 @@ void draw(){
   noStroke();
   textSize(12);
   fill(#FFFFFF);
-  rect(490, 580, 350, 100);
+  rect(490, 570, 350, 100);
   fill(0);
   text("Plates here for putting the food on to serve to customer.", 500, 600);
   textSize(12);
@@ -88,28 +88,28 @@ void draw(){
   image(bun2Img, 340, 560, 100, 100);
   image(hotdogbunImg, 335, 690, 100, 100);
   //Appliances
-  image(ovenImg, 890, 480, 100, 100);
-  image(griddleImg, 890, 580, 100, 100);
-  image(deepfryImg, 990, 580, 100, 100);
+  image(ovenImg, 990, 470, 100, 100);
+  image(griddleImg, 900, 580, 100, 100);
+  image(deepfryImg, 1050, 580, 100, 100);
   //Vegetables
   image(tomatoImg, 190, 575, 100, 100);
   image(lettuceImg, 190, 700, 80,80);
   image(onionsImg, 90, 575, 90, 90);
   image(potatoImg, 90, 700, 75, 75);
   //Meat
-  rect(490, 730, 100, 50);
-  rect(590, 730, 100, 50);
-  rect(690, 730, 100, 50);
+  image(pattyImg, 500, 700, 100, 100);
+  image(sausageImg, 620, 695, 90, 90);
+  image(rawchickenImg, 740, 700, 80, 80);
   //Condiments
-  rect(140, 430, 100, 50);
-  rect(210, 430, 100, 50);
-  rect(280, 430, 100, 50);
-  rect(360, 430, 100, 50);
+  image(ketchupImg, 120, 455, 100, 100);
+  image(mustardImg, 190, 455, 100, 100);
+  image(relishImg, 260, 455, 100, 100);
+  image(tomatosauceImg, 350, 455, 100, 100);
   //Misc
-  rect(540, 430, 100, 50);
-  rect(590, 430, 100, 50);
-  rect(640, 430, 100, 50);
-  rect(690, 430, 100, 50);
+  image(cheeseImg, 540, 455, 100, 100);
+  image(knifeImg, 640, 455, 100, 100);
+  image(doughImg, 740, 455, 100, 100);
+  image(frymixImg, 840, 455, 100, 100);
   //Drinks
   rect(890, 680, 100, 50);
   rect(960, 680, 100, 50);
@@ -119,28 +119,28 @@ void draw(){
   text("bun", 350, 575);
   text("hot dog bun", 350, 690);
   //Appliances section
-  text("pizza oven", 900, 500);
-  text("griddle", 900, 600);
-  text("deep fry", 1000, 600);
+  text("pizza oven", 1010, 480);
+  text("griddle", 950, 590);
+  text("deep fry", 1075, 590);
   //Vegetables section
   text("lettuce", 200, 690);
   text("tomato", 200, 575);
   text("potato", 100, 690);
   text("onions", 100, 575);
   //Meat section
-  text("patty", 500, 750);
-  text("sausage", 600, 750);
-  text("raw chicken", 700, 750);
+  text("patty", 520, 700);
+  text("sausage", 630, 700);
+  text("raw chicken", 750, 700);
   //Condiments
   text("ketchup", 150, 450);
   text("mustard", 220, 450);
   text("relish", 290, 450);
   text("tomato sauce", 360, 450);
   //Miscellaneous section
-  text("cheese", 550, 450);
-  text("knife", 600, 450);
-  text("dough", 650, 450);
-  text("fry mix", 700, 450);
+  text("cheese", 570, 450);
+  text("knife", 670, 450);
+  text("dough", 770, 450);
+  text("fry mix", 870, 450);
   //Drinks section
   text("water", 900, 700);
   text("soda", 970, 700);
