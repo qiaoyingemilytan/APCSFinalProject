@@ -205,11 +205,18 @@ void draw(){
     if (currentPatience <= currentCustomer.customersPatience()){
       fill(209);
       rect(1100, 70, 100, 150);
-      fill(0);
+      double patienceLevel = currentCustomer.patienceLevel(currentCustomer.customersPatience() - currentPatience);
+      if (patienceLevel == 0.25){
+        fill(0, 204, 102); //Green level
+      }
+      else if (patienceLevel == 0.1){
+        fill(255, 255, 0); //Yellow level
+      }
+      else if (patienceLevel == 0){
+        fill(255, 0, 0); //Red level
+      }
+      textSize(30);
       text((int)currentCustomer.customersPatience() - currentPatience, 1100, 100);
-      text("____", 1100, 105);
-      //This is to compare the total patience of the customer to the remaining time, might remove it later
-      text((int)currentCustomer.customersPatience(), 1100, 120);
     }
     //Consequence of customer's patience running out
     else{
@@ -298,6 +305,7 @@ void mousePressed() {
       currentCustomer.restartOrder();
     }     
   }
+
   for(int i = 0; i < 10; i++){
     if(onButton(i * 120 + 10, 600, 100, 50)){
       if(i == 0){
