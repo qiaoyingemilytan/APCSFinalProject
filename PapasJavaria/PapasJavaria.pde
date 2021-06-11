@@ -8,7 +8,8 @@ boolean showPatience = false;
 boolean startScreen = true;
 PImage hamburgerImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
 hotdogbunImg, ketchupImg, knifeImg, lettuceImg, mustardImg, onionsImg, ovenImg,
-pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg, sausageImg;
+pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg, sausageImg, waterImg,
+sodaImg, lemonadeImg, watercupImg, sodacupImg, lemonadecupImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
@@ -37,6 +38,12 @@ void setup() {
   tomatoImg = loadImage("tomato.png");
   tomatosauceImg = loadImage("tomatosauce.png");
   sausageImg = loadImage("sausage.png");
+  waterImg = loadImage("water.png");
+  sodaImg = loadImage("soda.png");
+  lemonadeImg = loadImage("lemonade.png");
+  watercupImg = loadImage("waterCup.png");
+  sodacupImg = loadImage("sodaCup.png");
+  lemonadecupImg = loadImage("lemonadeCup.png");
   
   customers = new ArrayList<Customer>();
   for (int i = 0; i < 10; i++){
@@ -70,7 +77,6 @@ void draw(){
      text("START", width/2, 460);
   }
   else{
-  background(209);
   noStroke();
   textSize(12);
   fill(#FFFFFF);
@@ -111,9 +117,9 @@ void draw(){
   image(doughImg, 740, 455, 100, 100);
   image(frymixImg, 840, 455, 100, 100);
   //Drinks
-  rect(890, 680, 100, 50);
-  rect(960, 680, 100, 50);
-  rect(1030, 680, 100, 50);
+  image(waterImg, 890, 680, 150, 150);
+  image(sodaImg, 960, 680, 150, 150);
+  image(lemonadeImg, 1030, 680, 150, 150);
   fill(0);
   //Bread section
   text("bun", 350, 575);
@@ -142,9 +148,9 @@ void draw(){
   text("dough", 770, 450);
   text("fry mix", 870, 450);
   //Drinks section
-  text("water", 900, 700);
-  text("soda", 970, 700);
-  text("lemonade", 1040, 700);
+  text("water", 945, 690);
+  text("soda", 1015, 690);
+  text("lemonade", 1075, 690);
   //Buttons for displaying order and customer's order
   text("Display customer's order", 750, 400);
   text("Give Order", 450, 400);
@@ -233,6 +239,7 @@ void mousePressed() {
   if (startScreen){
     if (onButton(500, 400, 200, 80)){
       startScreen = false;
+      background(209);
       textAlign(BASELINE);
     }
   }
@@ -291,114 +298,44 @@ void mousePressed() {
       currentCustomer.restartOrder();
     }     
   }
-  for(int i = 0; i < 10; i++){
-    if(onButton(i * 120 + 10, 600, 100, 50)){
-      if(i == 0){
-        currentCustomer.addStep("bun");
-        text("bun" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 1){
-        currentCustomer.addStep("patty");
-        text("patty" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 2){
-        currentCustomer.addStep("griddle");
-        text("griddle" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 3){
-        currentCustomer.addStep("tomato");
-        text("tomato" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 4){
-        currentCustomer.addStep("lettuce");
-        text("lettuce" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 5){
-        currentCustomer.addStep("onions");
-        text("onions" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 6){
-        currentCustomer.addStep("potato");
-        text("potato" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 7){
-        currentCustomer.addStep("knife");
-        text("knife" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 8){
-        currentCustomer.addStep("deep fry");
-        text("deep fry" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 9){
-        currentCustomer.addStep("hot dog bun");
-        text("hot dog bun" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-    }
-  }
-  for(int i = 0; i < 10; i++){
-    if(onButton(i * 120 + 10, 700, 100, 50)){
-      if(i == 0){
-        currentCustomer.addStep("ketchup");
-        text("ketchup" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 1){
-        currentCustomer.addStep("mustard");
-        text("mustard" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 2){
-        currentCustomer.addStep("relish");
-        text("relish" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 3){
-        currentCustomer.addStep("dough");
-        text("dough" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 4){
-        currentCustomer.addStep("tomato sauce");
-        text("tomato sauce" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 5){
-        currentCustomer.addStep("cheese");
-        text("cheese" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 6){
-        currentCustomer.addStep("oven");
-        text("oven" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 7){
-        currentCustomer.addStep("raw chicken");
-        text("raw chicken" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 8){
-        currentCustomer.addStep("fry mix");
-        text("fry mix" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-      if(i == 9){
-        currentCustomer.addStep("sausage");
-        text("sausage" , 100 + 100 * stepPosition, 200);
-        stepPosition++;
-      }
-    }
-  }
+  //bread buttons
+  if(onButton(340, 570, 100, 80)){currentCustomer.addStep("bun");
+  text("bun" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(335, 690, 100, 80)){currentCustomer.addStep("hot dog bun");
+  text("hot dog bun" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  //appliances
+  if(onButton(990, 470, 100, 100)){currentCustomer.addStep("oven");
+  text("oven" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(900, 590, 80, 80)){currentCustomer.addStep("griddle");
+  text("griddle" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(1050, 590, 100, 80)){currentCustomer.addStep("deep fry");
+  text("deep fry" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  //meat
+  if(onButton(500, 740, 80, 30)){currentCustomer.addStep("patty");
+  text("patty" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(620, 695, 90, 90)){currentCustomer.addStep("sausage");
+  text("sausage" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(740, 700, 80, 80)){currentCustomer.addStep("raw chicken");
+  text("raw chicken" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  //condiments
+  if(onButton(140, 455, 45, 100)){currentCustomer.addStep("ketchup");
+  text("ketchup" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(210, 455, 45, 100)){currentCustomer.addStep("mustard");
+  text("mustard" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(280, 455, 45, 100)){currentCustomer.addStep("relish");
+  text("relish" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(350, 475, 100, 60)){currentCustomer.addStep("tomato sauce");
+  text("tomato sauce" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  //misc
+  if(onButton(540, 470, 100, 75)){currentCustomer.addStep("cheese");
+  text("cheese" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(640, 455, 100, 80)){currentCustomer.addStep("knife");
+  text("knife" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(740, 455, 100, 80)){currentCustomer.addStep("dough");
+  text("dough" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  if(onButton(840, 455, 80, 100)){currentCustomer.addStep("fry mix");
+  text("fry mix" , 100 + 100 * stepPosition, 200); stepPosition++;}
+  
  }
 }
 void keyPressed() {

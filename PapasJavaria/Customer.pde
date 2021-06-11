@@ -181,11 +181,11 @@ class Customer{
   }
   
   public void makeOrder(){
-    
+    int number;
     float wantsDrink = (float)Math.random() * 1;
     //50 percent chance of the customer wanting a drink
     if (wantsDrink < 0.5){
-        int number = numberOfFoods[(int)Math.floor(Math.random()*(numberOfFoods.length - 1))]; //This makes is so that a customer can only order up to two foods if they want a drink
+        number = numberOfFoods[(int)Math.floor(Math.random()*(numberOfFoods.length - 1))]; //This makes is so that a customer can only order up to two foods if they want a drink
         float drink = (float)Math.random() * 3;
         if (drink < 1)
           water = true;
@@ -195,7 +195,8 @@ class Customer{
           lemonade = true;
     }
     else{
-      int number = numberOfFoods[(int)Math.floor(Math.random()*numberOfFoods.length)];
+      number = numberOfFoods[(int)Math.floor(Math.random()*numberOfFoods.length)];
+    }
     for (int i = 0; i < number; i++){
       float orderNum = (float)Math.random() * 5;
       if (orderNum < 1)
@@ -209,7 +210,6 @@ class Customer{
       else if (orderNum < 5)
         pizza = true;
     }
-  }
     /*
     if (Math.random() * 100 < 25)
       hamburger = true;
