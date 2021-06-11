@@ -270,6 +270,8 @@ void mousePressed() {
       for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
         text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 50);
       }
+      fill(#D3C8AB);
+      rect(0, 275, 500, 100);
       for(int i = 0; i < currentCustomer.getMeals().size(); i++){
         if(currentCustomer.getMeals().get(i).equals("hamburger")){
           image(hamburgerImg, 100 + 100 * i, 300, 100, 100);
@@ -310,7 +312,8 @@ void mousePressed() {
     for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
       text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 50);
     }
-    
+    fill(#D3C8AB);
+    rect(0, 275, 500, 100);
     for(int i = 0; i < currentCustomer.getMeals().size(); i++){
         if(currentCustomer.getMeals().get(i).equals("hamburger")){
           image(hamburgerImg, 100 + 100 * i, 300, 100, 100);
