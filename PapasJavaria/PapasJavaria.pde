@@ -157,7 +157,7 @@ void draw(){
   text("lemonade", 1075, 690);
   
   //Buttons for displaying order and customer's order
-  text("Display customer's order", 750, 400);
+  text("Get Order", 750, 400);
   text("Give Order", 450, 400);
   
   //Displaying money you have
@@ -217,19 +217,26 @@ void mousePressed() {
       startScreen = false;
       background(209);
       textAlign(BASELINE);
+      timeElapsed = millis() / 1000;
+      showPatience = true;
+      fill(209);
+      rect(0, 0, 1200, 300);
+      fill(0);
+      for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
+        text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 100);
+      }
     }
   }
   else{
 //Display customer's order button
   if (onButton(750 - 10, 400 - 20, 170, 50)){
-   timeElapsed = millis() / 1000;
-   showPatience = true;
-   fill(209);
-   rect(0, 0, 1200, 300);
-   fill(0);
-   for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
+    showPatience = true;
+    fill(209);
+    rect(0, 0, 1200, 300);
+    fill(0);
+    for (int i = 0; i < currentCustomer.customersOrder().size(); i++){
       text(currentCustomer.customersOrder().get(i), 100 + 100 * i, 100);
-   }
+    }
   }
   //Display order button
   //if (onButton(600 - 10, 400 - 20, 100, 50)){
@@ -304,15 +311,6 @@ void mousePressed() {
   text("sausage" , 100 + 100 * stepPosition, 200); stepPosition++;}
   if(onButton(740, 700, 80, 80)){currentCustomer.addStep("raw chicken");
   text("raw chicken" , 100 + 100 * stepPosition, 200); stepPosition++;}
-  //vegetables
-  if (onButton(190, 575, 100, 100)){ currentCustomer.addStep("tomato"); 
-  text("tomato" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
-  if (onButton(190, 700, 80, 80)){ currentCustomer.addStep("lettuce"); 
-  text("lettuce" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
-  if (onButton(90, 575, 90, 90)){ currentCustomer.addStep("onions"); 
-  text("onions" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
-  if (onButton(90, 700, 75, 75)){ currentCustomer.addStep("potato"); 
-  text("potato" , 100 + 100 * stepPosition, 200); stepPosition++; stepPosition++;}
   //condiments
   if(onButton(140, 455, 45, 100)){currentCustomer.addStep("ketchup");
   text("ketchup" , 100 + 100 * stepPosition, 200); stepPosition++;}
