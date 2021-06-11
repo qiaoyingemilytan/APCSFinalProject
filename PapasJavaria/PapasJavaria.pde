@@ -77,7 +77,6 @@ void draw(){
      text("START", width/2, 460);
   }
   else{
-  background(209);
   noStroke();
   textSize(12);
   fill(#FFFFFF);
@@ -240,6 +239,7 @@ void mousePressed() {
   if (startScreen){
     if (onButton(500, 400, 200, 80)){
       startScreen = false;
+      background(209);
       textAlign(BASELINE);
     }
   }
