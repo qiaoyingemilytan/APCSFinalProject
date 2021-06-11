@@ -11,7 +11,7 @@ boolean startScreen = true;
 PImage plateImg, hamburgerImg, friesImg, chickenImg, hotdogImg, pizzaImg, bunImg, bun2Img, cheeseImg, deepfryImg, doughImg, frymixImg, griddleImg,
 hotdogbunImg, ketchupImg, knifeImg, lettuceImg, mustardImg, onionsImg, ovenImg,
 pattyImg, potatoImg, rawchickenImg, relishImg, tomatoImg, tomatosauceImg, sausageImg, waterImg,
-sodaImg, lemonadeImg, watercupImg, sodacupImg, lemonadecupImg;
+sodaImg, lemonadeImg, watercupImg, sodacupImg, lemonadecupImg, customerredImg, customerblueImg, customergreenImg, customerorangeImg, customerpurpleImg;
 void setup() {
   frameRate(30);
   size(1200, 800); 
@@ -50,7 +50,11 @@ void setup() {
   watercupImg = loadImage("waterCup.png");
   sodacupImg = loadImage("sodaCup.png");
   lemonadecupImg = loadImage("lemonadeCup.png");
-  
+  customerredImg = loadImage("customerRed.png");
+  customerblueImg = loadImage("customerBlue.png");
+  customergreenImg = loadImage("customerGreen.png");
+  customerorangeImg = loadImage("customerOrange.png");
+  customerpurpleImg = loadImage("customerPurple.png");
   customers = new ArrayList<Customer>();
   for (int i = 0; i < 10; i++){
     Customer newCustomer = new Customer(1);
