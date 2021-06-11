@@ -6,7 +6,7 @@ class Customer{
   private double patience;
   private int difficulty;
   private int correctSize;
-  private int[] numberOfFoods = {1, 2, 3};
+  private int[] numberOfFoods = {1, 2};
   private ArrayList<String> order = new ArrayList<String>();
   private ArrayList<String> hamburgerSteps = new ArrayList<String>(
   Arrays.asList("bun", "patty", "griddle", "tomato", "lettuce", "onions", "bun"));
@@ -179,11 +179,9 @@ class Customer{
   }
   
   public void makeOrder(){
-    int number;
     float wantsDrink = (float)Math.random() * 1;
     //50 percent chance of the customer wanting a drink
     if (wantsDrink < 0.5){
-        number = numberOfFoods[(int)Math.floor(Math.random()*(numberOfFoods.length - 1))]; //This makes is so that a customer can only order up to two foods if they want a drink
         float drink = (float)Math.random() * 3;
         correctSize += 1;
         if (drink < 1)
@@ -193,9 +191,7 @@ class Customer{
         else if (drink < 3)
           lemonade = true;
     }
-    else{
-      number = numberOfFoods[(int)Math.floor(Math.random()*numberOfFoods.length)];
-    }
+    int number = numberOfFoods[(int)Math.floor(Math.random()*numberOfFoods.length)];
     for (int i = 0; i < number; i++){
       float orderNum = (float)Math.random() * 5;
       if (orderNum < 1){
