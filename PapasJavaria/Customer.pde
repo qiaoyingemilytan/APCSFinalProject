@@ -218,27 +218,27 @@ class Customer{
     int number = numberOfFoods[(int)Math.floor(Math.random()*numberOfFoods.length)];
     for (int i = 0; i < number; i++){
       float orderNum = (float)Math.random() * 5;
-      if (orderNum < 1 && !hotdog){
+      if (orderNum < 1 && !hotdog && !hamburger){
         hamburger = true;
         meals.add("hamburger");
         correctSize += 7;
       }
-      else if (orderNum < 2){
+      else if (orderNum < 2 && !fries){
         fries = true;
         meals.add("fries");
         correctSize += 3;
       }
-      else if (orderNum < 3){
+      else if (orderNum < 3 && !chicken){
         chicken = true;
         meals.add("chicken");
         correctSize += 3;
       }
-      else if (orderNum < 4 && !hamburger){
+      else if (orderNum < 4 && !hamburger && !hotdog){
         hotdog = true;
         meals.add("hotdog");
         correctSize += 6;
       }
-      else if (orderNum < 5){
+      else if (orderNum < 5 && !pizza){
         pizza = true;
         meals.add("pizza");
         correctSize += 4;
